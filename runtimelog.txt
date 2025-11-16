@@ -1,0 +1,2249 @@
+optimization framework runtime logging:
+
+nsorosa@jetson:~/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_39/build$ make -j4
+Consolidate compiler generated dependencies of target MySystem
+[100%] Built target MySystem
+ansorosa@jetson:~/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_39/build$ valgrind --tool=memcheck ./MySystem
+==11222== Memcheck, a memory error detector
+==11222== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==11222== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==11222== Command: ./MySystem
+==11222== 
+[2025-11-13 22:46:09.733] [info] Starting Refactored Pipeline...
+[2025-11-13 22:46:10.045] [info] Thread pool started with 2 threads
+[2025-11-13 22:46:10.373] [info] Loaded configuration from config.json
+[2025-11-13 22:46:10.465] [info] Created directory: /tmp/test_dir
+[2025-11-13 22:46:10.489] [info] Loaded configuration from config.json
+[2025-11-13 22:46:10.507] [info] [SharedQueue] Initialized with maxSize: 200.
+[2025-11-13 22:46:10.509] [info] [SharedQueue] Initialized with maxSize: 200.
+[2025-11-13 22:46:10.512] [info] [SharedQueue] Initialized with maxSize: 300.
+[2025-11-13 22:46:10.514] [info] [ConfigManager] Queues created: cam2Alg=200, cam2Disp=200, alg2Disp=300
+[2025-11-13 22:46:10.655] [error] [Aggregator] Cannot write to CSV file '/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_39/build/metrics_csv/realtime_metrics_010.csv'. Falling back to /tmp/realtime_metrics_010.csv
+[2025-11-13 22:46:10.662] [info] [Aggregator] CSV path resolved to: '/tmp/realtime_metrics_010.csv'
+[2025-11-13 22:46:10.667] [error] [Aggregator] Cannot write to JSON file '/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_39/build/metrics_csv/realtime_metrics010.ndjson'. Falling back to /tmp/realtime_metrics010.ndjson
+[2025-11-13 22:46:10.667] [info] [Aggregator] JSON path resolved to: '/tmp/realtime_metrics010.ndjson'
+[2025-11-13 22:46:10.759] [info] [Aggregator] cfg: expectsPower=true, expectsCamera=true, expectsAlgorithm=true, expectsDisplay=true, expectsSoC=true, merge_wait_ms=1000ms, flush_period_ms=1000ms, retention=2000s, prune_max=5s, dropEmptyCompat=true, dropEmptyOnFlush=true, json_flush_threshold=1000 flushes, csv='/tmp/realtime_metrics_010.csv', json='/tmp/realtime_metrics010.ndjson'
+[2025-11-13 22:46:10.764] [info] [ConfigManager] Aggregator initialized: merge_wait_ms=1000ms, retention=2000s
+[2025-11-13 22:46:10.774] [info] [LynsynModule] Validating configuration...
+[2025-11-13 22:46:10.786] [info] [LynsynModule] Ensured directory: /tmp/test_dir
+[2025-11-13 22:46:10.788] [info] [LynsynModule] Using outputCSV: '/tmp/test_dir/lynsyn_output.csv'
+[2025-11-13 22:46:10.791] [info] [ConfigManager] Lynsyn module initialized.
+[2025-11-13 22:46:10.794] [info] [CameraModule] Validating configuration...
+[2025-11-13 22:46:10.800] [info] [AlgorithmModule] Validating configuration...
+[2025-11-13 22:46:10.820] [info] [DisplayModule] Validating configuration...
+[2025-11-13 22:46:10.825] [info] [ConfigManager] Pipeline built: 5 modules.
+[2025-11-13 22:46:10.855] [info] Run duration set to 150 seconds
+[2025-11-13 22:46:10.857] [info] [LynsynModule] Validating configuration...
+[2025-11-13 22:46:10.858] [info] [LynsynModule] Ensured directory: /tmp/test_dir
+[2025-11-13 22:46:10.858] [info] [LynsynModule] Using outputCSV: '/tmp/test_dir/lynsyn_output.csv'
+[2025-11-13 22:46:10.858] [info] [CameraModule] Validating configuration...
+[2025-11-13 22:46:10.858] [info] [AlgorithmModule] Validating configuration...
+[2025-11-13 22:46:10.858] [info] [DisplayModule] Validating configuration...
+[2025-11-13 22:46:10.859] [info] [ConfigManager] All modules validated.
+[2025-11-13 22:46:10.861] [info] [SoCModule] Starting...
+[2025-11-13 22:46:11.780] [info] [SoCConcrete] SoC monitoring started with command 'tegrastats --interval 500'.
+[2025-11-13 22:46:11.782] [info] [SoCModule] Started.
+[2025-11-13 22:46:11.785] [info] [LynsynModule] Starting...
+[2025-11-13 22:46:11.801] [info] [LynsynMonitorConcrete] Initializing Lynsyn library...
+[2025-11-13 22:46:12.695] [info] [LynsynMonitorConcrete] Lynsyn initialized (attempt 1/5)
+[2025-11-13 22:46:12.707] [info] [Lynsyn] Library has no period_ms API; using legacy arming + host 1Hz scheduler.
+==11222== Syscall param ioctl(USBDEVFS_SUBMITURB).buffer points to uninitialised byte(s)
+==11222==    at 0x4EEB60C: ioctl (ioctl.S:26)
+==11222==    by 0x4F88573: ??? (in /lib/aarch64-linux-gnu/libusb-1.0.so.0.1.0)
+==11222==  Address 0x1ffefff069 is on thread 1's stack
+==11222== 
+[2025-11-13 22:46:12.790] [info] [Lynsyn] Monitoring started (target 100 ms / 10 Hz)
+[2025-11-13 22:46:12.802] [warning] [Lynsyn] period_ms (100) != sampleRateMs (100). Using sr_ms.
+[2025-11-13 22:46:12.803] [info] [Lynsyn] Library has no period_ms API; using legacy arming + host 1Hz scheduler.
+[2025-11-13 22:46:12.799] [info] [LynsynMonitorConcrete] Monitoring started
+[2025-11-13 22:46:12.808] [info] [Lynsyn] Monitoring started (target 100 ms / 10 Hz)
+[2025-11-13 22:46:12.810] [info] [LynsynModule] Started.
+[2025-11-13 22:46:12.811] [info] [CameraModule] Starting...
+[2025-11-13 22:46:12.823] [info] [DataConcrete] Attempting to open device at /dev/video0.
+[2025-11-13 22:46:13.010] [info] [DataConcrete] Device opened: /dev/video0 (fd=14)
+[2025-11-13 22:46:13.086] [info] [DataConcrete] Frame rate set to 30 FPS.
+[2025-11-13 22:46:13.138] [info] [DataConcrete] Verified frame rate: 30.00 FPS.
+[2025-11-13 22:46:13.149] [info] [DataConcrete] Initialized 4 buffers.
+[2025-11-13 22:46:13.152] [info] [DataConcrete] Device configured (320x240, 4 buffers).
+[2025-11-13 22:46:13.277] [info] [CameraModule] Streaming started.
+[2025-11-13 22:46:13.278] [info] [AlgorithmModule] Starting...
+[2025-11-13 22:46:13.287] [info] [AlgorithmConcrete] Constructed with ZeroCopy queues.
+[2025-11-13 22:46:13.291] [info] [DataConcrete] Capture thread started.
+[2025-11-13 22:46:13.391] [info] [AlgorithmConcrete] Thread started, mode: Invert.
+[2025-11-13 22:46:13.398] [info] [AlgorithmModule] Started.
+[2025-11-13 22:46:13.399] [info] [DisplayModule] Starting...
+[2025-11-13 22:46:14.971] [info] [AlgorithmConcrete] Frame 0: windowFPS=0.6, windowAvg=29.14ms, mode=Invert
+==11222== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==11222==    at 0x4EEB76C: writev (writev.c:26)
+==11222==    by 0x97BDAFB: ??? (in /usr/lib/aarch64-linux-gnu/libxcb.so.1.1.0)
+==11222==  Address 0x52cbf83 is 35 bytes inside a block of size 16,384 alloc'd
+==11222==    at 0x4847B0C: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+[2025-11-13 22:46:17.056] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:46:20.179] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:46:22.184] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Invalid write of size 8
+==11222==    at 0xC06B618: llvm::LLVMContextImpl::LLVMContextImpl(llvm::LLVMContext&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x1ffeffe930 is on thread 1's stack
+==11222==  48 bytes below stack pointer
+==11222== 
+[2025-11-13 22:46:24.214] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:46:28.105] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:46:29.707] [info] [SdlDisplayConcrete] SDL display initialized: 320x240
+[2025-11-13 22:46:29.795] [info] [ConfigManager] All modules started.
+[2025-11-13 22:46:29.876] [info] [DisplayModule] Render loop started.
+==11222== Thread 18:
+==11222== Invalid write of size 8
+==11222==    at 0xC077844: llvm::legacy::FunctionPassManager::FunctionPassManager(llvm::Module*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef67d0 is on thread 18's stack
+==11222==  64 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC078B0C: llvm::legacy::PassManager::PassManager() (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef67d0 is on thread 18's stack
+==11222==  64 bytes below stack pointer
+==11222== 
+[2025-11-13 22:46:30.655] [warning] [Aggregator] beginFrame(4): low FPS (0.06413545407901487) or missing dims; accepting partial frame for CSV
+==11222== Invalid write of size 8
+==11222==    at 0xC07AD04: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6590 is on thread 18's stack
+==11222==  64 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC075804: llvm::PMDataManager::removeNotPreservedAnalysis(llvm::Pass*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef64a0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+[2025-11-13 22:46:30.800] [info] [AlgorithmConcrete] Frame 4: windowFPS=0.3, windowAvg=19.51ms, mode=Invert
+==11222== Invalid write of size 8
+==11222==    at 0xC033F44: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6680 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC96A990: llvm::SROA::deleteDeadInstructions(llvm::SmallPtrSetImpl<llvm::AllocaInst*>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef66d0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC968E90: llvm::SROA::splitAlloca(llvm::AllocaInst&, llvm::sroa::AllocaSlices&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6260 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC9763DC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5710 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC6C051C: llvm::IDFCalculatorBase<llvm::BasicBlock, false>::calculate(llvm::SmallVectorImpl<llvm::BasicBlock*>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5830 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC6C1848: llvm::IDFCalculatorDetail::ChildrenGetterTy<llvm::BasicBlock, false>::get(llvm::BasicBlock* const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef51c0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC6BE170: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC84F688: llvm::ScopedHashTableScope<llvm::MemoryLocation, unsigned int, llvm::DenseMapInfo<llvm::MemoryLocation>, llvm::RecyclingAllocator<llvm::BumpPtrAllocatorImpl<llvm::MallocAllocator, 4096ul, 4096ul>, llvm::ScopedHashTableVal<llvm::MemoryLocation, unsigned int>, 72ul, 8ul> >::~ScopedHashTableScope() (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6440 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCB70798: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6260 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC685EF4: llvm::removeUnreachableBlocks(llvm::Function&, llvm::DomTreeUpdater*, llvm::MemorySSAUpdater*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6800 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC6CD930: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6490 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC6CAEFC: llvm::FoldBranchToCommonDest(llvm::BranchInst*, llvm::MemorySSAUpdater*, unsigned int) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6170 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC6E0268: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5ec0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+[2025-11-13 22:46:33.122] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Invalid write of size 8
+==11222==    at 0xC93FD2C: llvm::ReassociatePass::ReassociateExpression(llvm::BinaryOperator*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6680 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC939498: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6450 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93FE50: llvm::ReassociatePass::ReassociateExpression(llvm::BinaryOperator*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC93FE80: llvm::ReassociatePass::ReassociateExpression(llvm::BinaryOperator*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC940460: void llvm::stable_sort<llvm::SmallVector<llvm::reassociate::ValueEntry, 8u>&>(llvm::SmallVector<llvm::reassociate::ValueEntry, 8u>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4846438: operator new(unsigned long, std::nothrow_t const&) (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC9404A0: void llvm::stable_sort<llvm::SmallVector<llvm::reassociate::ValueEntry, 8u>&>(llvm::SmallVector<llvm::reassociate::ValueEntry, 8u>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC9404BC: void llvm::stable_sort<llvm::SmallVector<llvm::reassociate::ValueEntry, 8u>&>(llvm::SmallVector<llvm::reassociate::ValueEntry, 8u>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC9404DC: void llvm::stable_sort<llvm::SmallVector<llvm::reassociate::ValueEntry, 8u>&>(llvm::SmallVector<llvm::reassociate::ValueEntry, 8u>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC945FFC: void std::__stable_sort_adaptive<llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC946780: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC946870: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC94687C: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC946048: void std::__stable_sort_adaptive<llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC9460A4: void std::__stable_sort_adaptive<llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC94640C: void std::__merge_adaptive<llvm::reassociate::ValueEntry*, long, llvm::reassociate::ValueEntry*, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, long, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC946558: void std::__merge_adaptive<llvm::reassociate::ValueEntry*, long, llvm::reassociate::ValueEntry*, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, long, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC946568: void std::__merge_adaptive<llvm::reassociate::ValueEntry*, long, llvm::reassociate::ValueEntry*, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, long, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC94658C: void std::__merge_adaptive<llvm::reassociate::ValueEntry*, long, llvm::reassociate::ValueEntry*, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, long, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC94659C: void std::__merge_adaptive<llvm::reassociate::ValueEntry*, long, llvm::reassociate::ValueEntry*, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, long, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC9465AC: void std::__merge_adaptive<llvm::reassociate::ValueEntry*, long, llvm::reassociate::ValueEntry*, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, long, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC9465DC: void std::__merge_adaptive<llvm::reassociate::ValueEntry*, long, llvm::reassociate::ValueEntry*, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, long, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93D43C: llvm::ReassociatePass::OptimizeExpression(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC93D45C: llvm::ReassociatePass::OptimizeExpression(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93D450: llvm::ReassociatePass::OptimizeExpression(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93D4D4: llvm::ReassociatePass::OptimizeExpression(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC93D4E0: llvm::ReassociatePass::OptimizeExpression(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93D4F8: llvm::ReassociatePass::OptimizeExpression(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93B2C4: llvm::ReassociatePass::OptimizeAdd(llvm::Instruction*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93B354: llvm::ReassociatePass::OptimizeAdd(llvm::Instruction*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93B338: llvm::ReassociatePass::OptimizeAdd(llvm::Instruction*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93B708: llvm::ReassociatePass::OptimizeAdd(llvm::Instruction*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93B75C: llvm::ReassociatePass::OptimizeAdd(llvm::Instruction*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93D58C: llvm::ReassociatePass::OptimizeExpression(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93FF6C: llvm::ReassociatePass::ReassociateExpression(llvm::BinaryOperator*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC940004: llvm::ReassociatePass::ReassociateExpression(llvm::BinaryOperator*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC937F54: llvm::ReassociatePass::RewriteExprTree(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC937F74: llvm::ReassociatePass::RewriteExprTree(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC938060: llvm::ReassociatePass::RewriteExprTree(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93B110: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93B198: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93B144: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC944058: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC944070: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93CE90: llvm::ReassociatePass::OptimizeMul(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC9465BC: void std::__merge_adaptive<llvm::reassociate::ValueEntry*, long, llvm::reassociate::ValueEntry*, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, long, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93AA9C: llvm::ReassociatePass::OptimizeXor(llvm::Instruction*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93AAF4: llvm::ReassociatePass::OptimizeXor(llvm::Instruction*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93AB44: llvm::ReassociatePass::OptimizeXor(llvm::Instruction*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC93C610: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC940274: llvm::ReassociatePass::ReassociateExpression(llvm::BinaryOperator*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC83EF20: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef68a0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCC0D818: llvm::LoopInfoBase<llvm::BasicBlock, llvm::Loop>::analyze(llvm::DominatorTreeBase<llvm::BasicBlock, false> const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef6880 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC788D9C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef67f0 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC682F44: llvm::LowerDbgDeclare(llvm::Function&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef58f0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC7F1DC0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5800 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC78146C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5800 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC780538: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5630 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC825AF4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5800 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC827618: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5800 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC7B36DC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5800 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC789424: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC7894A4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC7894B4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC789084: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC789088: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC789450: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC7896F8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC789744: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC789678: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC789718: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCBBF21C: llvm::InstructionPrecedenceTracking::clear() (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef65a0 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC86582C: void std::vector<llvm::GVN::Expression, std::allocator<llvm::GVN::Expression> >::_M_realloc_insert<llvm::GVN::Expression const&>(__gnu_cxx::__normal_iterator<llvm::GVN::Expression*, std::vector<llvm::GVN::Expression, std::allocator<llvm::GVN::Expression> > >, llvm::GVN::Expression const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef62c0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC85DCE4: llvm::GVN::processNonLocalLoad(llvm::LoadInst*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef63e0 is on thread 18's stack
+==11222==  96 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCC21B20: llvm::MemoryDependenceResults::getNonLocalPointerDepFromBB(llvm::Instruction*, llvm::PHITransAddr const&, llvm::MemoryLocation const&, bool, llvm::BasicBlock*, llvm::SmallVectorImpl<llvm::NonLocalDepResult>&, llvm::DenseMap<llvm::BasicBlock*, llvm::Value*, llvm::DenseMapInfo<llvm::BasicBlock*>, llvm::detail::DenseMapPair<llvm::BasicBlock*, llvm::Value*> >&, bool) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5450 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC85C4C8: llvm::GVN::PerformLoadPRE(llvm::LoadInst*, llvm::SmallVector<llvm::gvn::AvailableValueInBlock, 64u>&, llvm::SmallVector<llvm::BasicBlock*, 64u>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5540 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+[2025-11-13 22:46:35.671] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Invalid write of size 8
+==11222==    at 0xCCD7CAC: llvm::TargetIRAnalysis::TargetIRAnalysis(std::function<llvm::TargetTransformInfo (llvm::Function const&)>) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef56e0 is on thread 18's stack
+==11222==  16 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC4782F8: llvm::SelectionDAG::SelectionDAG(llvm::TargetMachine const&, llvm::CodeGenOpt::Level) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef55e0 is on thread 18's stack
+==11222==  64 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC335D54: llvm::TargetLoweringObjectFileELF::Initialize(llvm::MCContext&, llvm::TargetMachine const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC514454: llvm::DwarfDebug::DwarfDebug(llvm::AsmPrinter*, llvm::Module*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef55e0 is on thread 18's stack
+==11222==  64 bytes below stack pointer
+==11222== 
+==11222== 
+==11222== More than 100 errors detected.  Subsequent errors
+==11222== will still be recorded, but in less detail than before.
+==11222== Invalid write of size 8
+==11222==    at 0xC52B7B8: llvm::DwarfFile::DwarfFile(llvm::AsmPrinter*, llvm::StringRef, llvm::BumpPtrAllocatorImpl<llvm::MallocAllocator, 4096ul, 4096ul>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef55a0 is on thread 18's stack
+==11222==  64 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC0F0308: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef55a0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xD0A1ADC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xD16A7A0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC8A9A44: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5500 is on thread 18's stack
+==11222==  160 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCC6DBFC: llvm::ScalarEvolution::getMulExpr(llvm::SmallVectorImpl<llvm::SCEV const*>&, llvm::SCEV::NoWrapFlags, unsigned int) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef3b90 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCC88DF4: llvm::ScalarEvolution::BackedgeTakenInfo::BackedgeTakenInfo(llvm::ArrayRef<std::pair<llvm::BasicBlock*, llvm::ScalarEvolution::ExitLimit> >, bool, llvm::SCEV const*, bool) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef43c0 is on thread 18's stack
+==11222==  96 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCC9DD80: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4690 is on thread 18's stack
+==11222==  96 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DABE0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8DABE8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8DAC40: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E72C8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8E72D8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DACA0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8DACA8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DAC34: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DADE8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DADF0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DC328: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DC2FC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EA2A4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8EA2AC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DB610: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xCC6BA0C: llvm::ScalarEvolution::getAddExpr(llvm::SmallVectorImpl<llvm::SCEV const*>&, llvm::SCEV::NoWrapFlags, unsigned int) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DB640: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8DB648: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DB664: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EA7C8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9CAC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9CBC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8E9CF3: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484AEF8: __GI_memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484B400: __GI_memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484AF80: __GI_memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9D28: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EAA14: void std::__introsort_loop<llvm::SCEV const**, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::SCEV const**, llvm::SCEV const**, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EAB50: void std::__final_insertion_sort<llvm::SCEV const**, __gnu_cxx::__ops::_Iter_less_iter>(llvm::SCEV const**, llvm::SCEV const**, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EABE0: void std::__final_insertion_sort<llvm::SCEV const**, __gnu_cxx::__ops::_Iter_less_iter>(llvm::SCEV const**, llvm::SCEV const**, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EABEC: void std::__final_insertion_sort<llvm::SCEV const**, __gnu_cxx::__ops::_Iter_less_iter>(llvm::SCEV const**, llvm::SCEV const**, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EB1F0: _ZN4llvm7hashing6detail23hash_combine_range_implIKPKNS_4SCEVEEENSt9enable_ifIXsr16is_hashable_dataIT_EE5valueENS_9hash_codeEE4typeEPS8_SC_ (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xBEAD3EC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xBEAD3F8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8EB078: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EB080: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EB084: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8EB088: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484CD00: bcmp (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8EB0B4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8E9DE0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8E9DEC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9E14: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9E20: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9E4C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8E9E54: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6040: __GI_memmove (memcpy.S:75)
+==11222==    by 0xC8E9E5F: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484D9B0: __GI_memmove (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484D8A4: __GI_memmove (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484D968: __GI_memmove (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8E9EA8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9EF4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9F00: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8E9F3B: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484B2C4: __GI_memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9F64: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9F84: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EA120: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EA148: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DB748: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DB768: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE088: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE098: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8DE0DF: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EC13C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EC14C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8EC18B: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EC320: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8EC32C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8EA7D8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EA8B8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EA964: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EA9E8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9D10: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8E9D18: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EAC08: void std::__final_insertion_sort<llvm::SCEV const**, __gnu_cxx::__ops::_Iter_less_iter>(llvm::SCEV const**, llvm::SCEV const**, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xBEAD43C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xBEAD444: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8E9E24: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9E2C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8E9E6C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E9E88: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8E9E90: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8E9EA7: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EC39C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EC3AC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8EC3E3: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EC418: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EC44C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484CD40: bcmp (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484CD44: bcmp (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE120: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE1D8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE1E8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8DE227: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE264: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE280: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8DE28C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE2C0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE2D0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8DE307: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE330: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE378: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE8B8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE8C8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8DE903: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE928: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DE958: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DEA10: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DEA20: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8DEA5B: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DEAB4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8ED298: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8ED2A4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8ED2DF: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DEAE8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DEBE0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DEBF0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8DEC2B: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF0F0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF100: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8DF13B: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xD111F58: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF25C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF274: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF1A0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC8DF1AC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF30C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF31C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8DF34F: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF384: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF5F4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF604: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8DF63F: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF678: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF704: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF714: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC8DF74B: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF7A4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF7DC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8DF82C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EEDBC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EEE44: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EEE60: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8EF0CC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E0F64: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8E0F90: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC8E1C8C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15eecfd0 is on thread 18's stack
+==11222==  144 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8F13C8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xD16BB70: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xD16BB80: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8F1318: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8F1374: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8F12E0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8F12E8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8F1518: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8F27E4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8F2864: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC8F28CC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC90F9EC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef55a0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xD170FD0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5130 is on thread 18's stack
+==11222==  16 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC13300C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef55a0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC2FA578: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef55a0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC037D58: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5130 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC8394C0: llvm::ConstantHoistingPass::runImpl(llvm::Function&, llvm::TargetTransformInfo&, llvm::DominatorTree&, llvm::BlockFrequencyInfo*, llvm::BasicBlock&, llvm::ProfileSummaryInfo*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef55a0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC839728: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4010 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCC2A008: llvm::MemorySSA::buildMemorySSA(llvm::BatchAAResults&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5110 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+[2025-11-13 22:46:39.458] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Invalid write of size 8
+==11222==    at 0xCC2F4C0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4040 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xCC2F55C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xCC2F578: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xCC30390: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xCC303A8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xCC2F778: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xCC2FF7C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xCC2FF9C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xCC30154: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xCC2FCCC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xCC2FCE0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xCC2FCF4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCCDC3D4: llvm::ScopedNoAliasAAResult::mayAliasInScopes(llvm::MDNode const*, llvm::MDNode const*) const (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef3940 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC15C58C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4bb0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC15D6BC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4750 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC15B360: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC15B5D4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC15BDC8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC15BDEC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC15C0C4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC15C0E8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC0B40B0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC0B40C4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC0B40CC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC0B40D4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC0B22B0: llvm::VectorType::get(llvm::Type*, llvm::ElementCount) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xBFEB844: llvm::ConstantDataSequential::getImpl(llvm::StringRef, llvm::Type*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xBFEB860: llvm::ConstantDataSequential::getImpl(llvm::StringRef, llvm::Type*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xBF2E178: llvm::StringMapImpl::LookupBucketFor(llvm::StringRef) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xBF2E194: llvm::StringMapImpl::LookupBucketFor(llvm::StringRef) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xBF2E1E8: llvm::StringMapImpl::LookupBucketFor(llvm::StringRef) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xBF2E200: llvm::StringMapImpl::LookupBucketFor(llvm::StringRef) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC1598AC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5590 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xD1621FC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5590 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC103F20: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5580 is on thread 18's stack
+==11222==  144 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC63EF9C: llvm::SplitIndirectBrCriticalEdges(llvm::Function&, llvm::BranchProbabilityInfo*, llvm::BlockFrequencyInfo*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5090 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC105EB8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC105FAC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC105FB4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1073E8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC1073F4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC0BA574: llvm::ValueHandleBase::AddToExistingUseList(llvm::ValueHandleBase**) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC10746C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC10748C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC10750C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC10753C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC0BA88C: llvm::ValueHandleBase::RemoveFromUseList() (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC0BA8B4: llvm::ValueHandleBase::RemoveFromUseList() (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC0BA924: llvm::ValueHandleBase::RemoveFromUseList() (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC107534: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC319C84: llvm::StackProtector::RequiresStackProtector() (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5560 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC1DD1AC: llvm::MachineFunction::MachineFunction(llvm::Function const&, llvm::LLVMTargetMachine const&, llvm::TargetSubtargetInfo const&, unsigned int, llvm::MachineModuleInfo&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5190 is on thread 18's stack
+==11222==  48 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC23FAA8: llvm::SmallVectorTemplateBase<std::pair<unsigned int, llvm::SmallVector<unsigned int, 4u> >, false>::grow(unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef50e0 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC3C34E4: llvm::FunctionLoweringInfo::set(llvm::Function const&, llvm::MachineFunction&, llvm::SelectionDAG*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef50c0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC23FC50: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4d40 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC0ED2A4: llvm::ComputeValueVTs(llvm::TargetLowering const&, llvm::DataLayout const&, llvm::Type*, llvm::SmallVectorImpl<llvm::EVT>&, llvm::SmallVectorImpl<llvm::EVT>*, llvm::SmallVectorImpl<unsigned long>*, unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC0ED2B0: llvm::ComputeValueVTs(llvm::TargetLowering const&, llvm::DataLayout const&, llvm::Type*, llvm::SmallVectorImpl<llvm::EVT>&, llvm::SmallVectorImpl<llvm::EVT>*, llvm::SmallVectorImpl<unsigned long>*, unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC3C4454: llvm::FunctionLoweringInfo::set(llvm::Function const&, llvm::MachineFunction&, llvm::SelectionDAG*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC3C4484: llvm::FunctionLoweringInfo::set(llvm::Function const&, llvm::MachineFunction&, llvm::SelectionDAG*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC46CF74: llvm::SelectionDAGISel::LowerArguments(llvm::Function const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4d40 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xD0FFBAC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4550 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC43D318: llvm::RegsForValue::getCopyToRegs(llvm::SDValue, llvm::SelectionDAG&, llvm::SDLoc const&, llvm::SDValue&, llvm::SDValue*, llvm::Value const*, llvm::ISD::NodeType) const (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4420 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC46DF90: llvm::SelectionDAGISel::LowerArguments(llvm::Function const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC46E230: llvm::SelectionDAGISel::LowerArguments(llvm::Function const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC46E2DC: llvm::SelectionDAGISel::LowerArguments(llvm::Function const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC4AFE8C: llvm::SelectionDAGISel::SelectBasicBlock(llvm::ilist_iterator<llvm::ilist_detail::node_options<llvm::Instruction, false, false, void>, false, true>, llvm::ilist_iterator<llvm::ilist_detail::node_options<llvm::Instruction, false, false, void>, false, true>, bool&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC4AFED0: llvm::SelectionDAGISel::SelectBasicBlock(llvm::ilist_iterator<llvm::ilist_detail::node_options<llvm::Instruction, false, false, void>, false, true>, llvm::ilist_iterator<llvm::ilist_detail::node_options<llvm::Instruction, false, false, void>, false, true>, bool&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC4AFE10: llvm::SelectionDAGISel::SelectBasicBlock(llvm::ilist_iterator<llvm::ilist_detail::node_options<llvm::Instruction, false, false, void>, false, true>, llvm::ilist_iterator<llvm::ilist_detail::node_options<llvm::Instruction, false, false, void>, false, true>, bool&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC44E480: llvm::SelectionDAGBuilder::getValueImpl(llvm::Value const*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4c50 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC444680: llvm::SelectionDAGBuilder::visitLoad(llvm::LoadInst const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4ce0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC444F4C: llvm::SelectionDAGBuilder::visitStore(llvm::StoreInst const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4ce0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC44A47C: llvm::SelectionDAGBuilder::visitShuffleVector(llvm::User const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4ce0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC43FDCC: llvm::SelectionDAGBuilder::HandlePHINodesInSuccessorBlocks(llvm::BasicBlock const*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC43FDF8: llvm::SelectionDAGBuilder::HandlePHINodesInSuccessorBlocks(llvm::BasicBlock const*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC38DB94: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef3da0 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC3B13B4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef3810 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC361800: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC361818: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC3AC0F4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef3db0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC393F3C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef3da0 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC384114: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef3db0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC396560: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef3db0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC408884: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4430 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC40A368: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC40AEA8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC40AEB4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC40AF88: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC40AFD8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+[2025-11-13 22:46:42.001] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Invalid write of size 8
+==11222==    at 0xC42D9D8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4cb0 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC2F408C: std::vector<llvm::SUnit, std::allocator<llvm::SUnit> >::reserve(unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4540 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC43140C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4990 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC45E594: llvm::SelectionDAGBuilder::visitIntrinsicCall(llvm::CallInst const&, unsigned int) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4ce0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC440778: llvm::SelectionDAGBuilder::visitRet(llvm::ReturnInst const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4ce0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC401324: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef41f0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC40CF20: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC40CF2C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xD11E020: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xD0FD760: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC164DA0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5100 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC312078: llvm::SmallVectorTemplateBase<llvm::SmallVector<llvm::SlotIndex, 4u>, false>::grow(unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4df0 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4845BA0: malloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xBF2596F: llvm::SmallVectorBase::grow_pod(void*, unsigned long, unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xD0E10EC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef51a0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC1FA1D0: llvm::LoopInfoBase<llvm::MachineBasicBlock, llvm::MachineLoop>::analyze(llvm::DominatorTreeBase<llvm::MachineBasicBlock, false> const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5170 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC1C1DAC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5190 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC2575E8: llvm::MachineTraceMetrics::Ensemble::Ensemble(llvm::MachineTraceMetrics*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4a40 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC25C4F4: llvm::SmallVectorTemplateBase<llvm::MachineTraceMetrics::TraceBlockInfo, false>::grow(unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef49f0 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC12C0B0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5190 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xD17391C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5190 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC1F0634: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5190 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC1C8774: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5190 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC1CC400: llvm::ScopedHashTableScope<llvm::MachineInstr*, unsigned int, llvm::MachineInstrExpressionTrait, llvm::RecyclingAllocator<llvm::BumpPtrAllocatorImpl<llvm::MallocAllocator, 4096ul, 4096ul>, llvm::ScopedHashTableVal<llvm::MachineInstr*, unsigned int>, 32ul, 8ul> >::~ScopedHashTableScope() (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4dd0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC22DD34: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4fc0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC24CAE8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef51a0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC291F34: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC19C48C: std::vector<llvm::SmallVector<unsigned int, 4u>, std::allocator<llvm::SmallVector<unsigned int, 4u> > >::_M_default_append(unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5060 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+[2025-11-13 22:46:46.247] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC296F18: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC296FAC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC296FBC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC296DB8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC296DBC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC296F44: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC349E50: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef51a0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC34BB54: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4f20 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC34AA10: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC34AA18: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC34AE48: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC34AF8C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC34AF9C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC34B038: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC34B514: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC17C9A4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5110 is on thread 18's stack
+==11222==  64 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC18E418: llvm::LiveRangeCalc::calculate(llvm::LiveInterval&, bool) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef50e0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC2C7F80: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5000 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5DF8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5E10: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5E54: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5E6C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C79DC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5C54: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC2C5C18: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x484AF98: __GI_memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C7A1C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5A40: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5A6C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5A88: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC2C5A54: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5C04: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC2C7A20: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC2C7A68: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC2C7A10: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5F64: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC2C5F74: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C602C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C5FF8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC2C600C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C6008: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C6070: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC2C60A4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC2F211C: llvm::ScheduleDAGInstrs::ScheduleDAGInstrs(llvm::MachineFunction&, llvm::MachineLoopInfo const*, bool) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef50d0 is on thread 18's stack
+==11222==  64 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC24841C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5170 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC24A378: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4e40 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC17F70C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4ba0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC24B2EC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4a20 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC24A418: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC24A420: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC24B464: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC225D78: llvm::SmallVectorImpl<llvm::SUnit*>::operator=(llvm::SmallVectorImpl<llvm::SUnit*>&&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC225D84: llvm::SmallVectorImpl<llvm::SUnit*>::operator=(llvm::SmallVectorImpl<llvm::SUnit*>&&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC225DD8: llvm::SmallVectorImpl<llvm::SUnit*>::operator=(llvm::SmallVectorImpl<llvm::SUnit*>&&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4EA6050: __GI_memcpy (memcpy.S:89)
+==11222==    by 0xC225DF7: llvm::SmallVectorImpl<llvm::SUnit*>::operator=(llvm::SmallVectorImpl<llvm::SUnit*>&&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC24A694: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC24A6C4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+[2025-11-13 22:46:48.295] [warning] [Lynsyn] Failed to get sample (#1)  backoff 250 ms
+[2025-11-13 22:46:48.670] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Invalid write of size 8
+==11222==    at 0xC171D38: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5190 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC12FC20: llvm::SmallVectorTemplateBase<llvm::SmallVector<unsigned int, 8u>, false>::grow(unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5160 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC2AEC24: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5030 is on thread 18's stack
+==11222==  96 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC190C9C: llvm::LiveRangeEdit::createEmptyIntervalFrom(unsigned int, bool) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4b40 is on thread 18's stack
+==11222==  96 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC17C64C: llvm::LiveIntervals::createInterval(unsigned int) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4b20 is on thread 18's stack
+==11222==  32 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC3095FC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC30974C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC3096F0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC174234: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4b50 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC190EB4: llvm::LiveRangeEdit::createFrom(unsigned int) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef49f0 is on thread 18's stack
+==11222==  64 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1E65B0: llvm::AnalyzeVirtRegInBundle(llvm::MachineInstr&, unsigned int, llvm::SmallVectorImpl<std::pair<llvm::MachineInstr*, unsigned int> >*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC1E65BC: llvm::AnalyzeVirtRegInBundle(llvm::MachineInstr&, unsigned int, llvm::SmallVectorImpl<std::pair<llvm::MachineInstr*, unsigned int> >*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC150B10: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC150B1C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC150C00: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC153330: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4fb0 is on thread 18's stack
+==11222==  160 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC174EC4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4fd0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC31E760: llvm::SmallVectorTemplateBase<llvm::SmallVector<llvm::MachineMemOperand*, 8u>, false>::grow(unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4e10 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC31EB58: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4e10 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC220980: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4e20 is on thread 18's stack
+==11222==  64 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC220AA4: llvm::SmallVectorTemplateBase<llvm::SmallVector<int, 4u>, false>::grow(unsigned long) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4dd0 is on thread 18's stack
+==11222==  80 bytes below stack pointer
+==11222== 
+[2025-11-13 22:46:50.755] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Invalid write of size 8
+==11222==    at 0xC1C7418: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef50b0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC1C7644: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef50c0 is on thread 18's stack
+==11222==  96 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC1C6254: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4fb0 is on thread 18's stack
+==11222==  96 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C5868: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C5AA0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C5B64: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C5BC4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C5BCC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C5BD4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C5C0C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC1C5C10: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C4B40: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC1C4B48: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C4D10: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C4D2C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC251C98: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5190 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC0F8BB4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4ee0 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC0FA240: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4f40 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xD15FBD8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5190 is on thread 18's stack
+==11222==  128 bytes below stack pointer
+==11222== 
+[2025-11-13 22:46:52.794] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Thread 7:
+==11222== Invalid read of size 8
+==11222==    at 0x4A9AD58: lynsyn_getNext (lynsyn.c:1033)
+==11222==    by 0x4A9C4FB: lynsyn_getNextSample (lynsyn.c:1040)
+==11222==    by 0x1A637B: LynsynMonitorConcrete::monitoringThreadLoop_() (LynsynMonitorConcrete_new.h:382)
+==11222==    by 0x4BB59FB: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.32)
+==11222==    by 0x48B0087: start_thread (pthread_create.c:463)
+==11222==    by 0x4EF30CB: thread_start (clone.S:78)
+==11222==  Address 0x5281b50 is 0 bytes after a block of size 1,920 alloc'd
+==11222==    at 0x4845BFC: malloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Invalid read of size 8
+==11222==    at 0x4A9C428: convertSample (lynsyn.c:1207)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1041)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1039)
+==11222==    by 0x1A637B: LynsynMonitorConcrete::monitoringThreadLoop_() (LynsynMonitorConcrete_new.h:382)
+==11222==    by 0x4BB59FB: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.32)
+==11222==    by 0x48B0087: start_thread (pthread_create.c:463)
+==11222==    by 0x4EF30CB: thread_start (clone.S:78)
+==11222==  Address 0x5281b50 is 0 bytes after a block of size 1,920 alloc'd
+==11222==    at 0x4845BFC: malloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Invalid read of size 8
+==11222==    at 0x4A9C430: convertSample (lynsyn.c:1209)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1041)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1039)
+==11222==    by 0x1A637B: LynsynMonitorConcrete::monitoringThreadLoop_() (LynsynMonitorConcrete_new.h:382)
+==11222==    by 0x4BB59FB: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.32)
+==11222==    by 0x48B0087: start_thread (pthread_create.c:463)
+==11222==    by 0x4EF30CB: thread_start (clone.S:78)
+==11222==  Address 0x5281b58 is 8 bytes after a block of size 1,920 alloc'd
+==11222==    at 0x4845BFC: malloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Invalid read of size 8
+==11222==    at 0x4A9C438: convertSample (lynsyn.c:1209)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1041)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1039)
+==11222==    by 0x1A637B: LynsynMonitorConcrete::monitoringThreadLoop_() (LynsynMonitorConcrete_new.h:382)
+==11222==    by 0x4BB59FB: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.32)
+==11222==    by 0x48B0087: start_thread (pthread_create.c:463)
+==11222==    by 0x4EF30CB: thread_start (clone.S:78)
+==11222==  Address 0x5281b60 is 16 bytes after a block of size 1,920 alloc'd
+==11222==    at 0x4845BFC: malloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Invalid read of size 8
+==11222==    at 0x4A9C444: convertSample (lynsyn.c:1209)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1041)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1039)
+==11222==    by 0x1A637B: LynsynMonitorConcrete::monitoringThreadLoop_() (LynsynMonitorConcrete_new.h:382)
+==11222==    by 0x4BB59FB: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.32)
+==11222==    by 0x48B0087: start_thread (pthread_create.c:463)
+==11222==    by 0x4EF30CB: thread_start (clone.S:78)
+==11222==  Address 0x5281b68 is 24 bytes after a block of size 1,920 in arena "client"
+==11222== 
+==11222== Invalid read of size 8
+==11222==    at 0x4A9C44C: convertSample (lynsyn.c:1209)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1041)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1039)
+==11222==    by 0x1A637B: LynsynMonitorConcrete::monitoringThreadLoop_() (LynsynMonitorConcrete_new.h:382)
+==11222==    by 0x4BB59FB: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.32)
+==11222==    by 0x48B0087: start_thread (pthread_create.c:463)
+==11222==    by 0x4EF30CB: thread_start (clone.S:78)
+==11222==  Address 0x5281b70 is 32 bytes before a block of size 64 in arena "client"
+==11222== 
+==11222== Invalid read of size 2
+==11222==    at 0x4A9C4AC: convertSample (lynsyn.c:1213)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1041)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1039)
+==11222==    by 0x1A637B: LynsynMonitorConcrete::monitoringThreadLoop_() (LynsynMonitorConcrete_new.h:382)
+==11222==    by 0x4BB59FB: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.32)
+==11222==    by 0x48B0087: start_thread (pthread_create.c:463)
+==11222==    by 0x4EF30CB: thread_start (clone.S:78)
+==11222==  Address 0x5281b80 is 16 bytes before a block of size 52 alloc'd
+==11222==    at 0x4845BFC: malloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Invalid read of size 2
+==11222==    at 0x4A9C4D4: convertSample (lynsyn.c:1215)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1041)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1039)
+==11222==    by 0x1A637B: LynsynMonitorConcrete::monitoringThreadLoop_() (LynsynMonitorConcrete_new.h:382)
+==11222==    by 0x4BB59FB: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.32)
+==11222==    by 0x48B0087: start_thread (pthread_create.c:463)
+==11222==    by 0x4EF30CB: thread_start (clone.S:78)
+==11222==  Address 0x5281b82 is 14 bytes before a block of size 52 alloc'd
+==11222==    at 0x4845BFC: malloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Invalid read of size 4
+==11222==    at 0x4A9C47C: convertSample (lynsyn.c:1224)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1041)
+==11222==    by 0x4A9C51B: lynsyn_getNextSample (lynsyn.c:1039)
+==11222==    by 0x1A637B: LynsynMonitorConcrete::monitoringThreadLoop_() (LynsynMonitorConcrete_new.h:382)
+==11222==    by 0x4BB59FB: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.32)
+==11222==    by 0x48B0087: start_thread (pthread_create.c:463)
+==11222==    by 0x4EF30CB: thread_start (clone.S:78)
+==11222==  Address 0x5281b88 is 8 bytes before a block of size 52 alloc'd
+==11222==    at 0x4845BFC: malloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+[2025-11-13 22:46:54.893] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Thread 18:
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC14F94C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC14F984: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC207ED8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5680 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xC4F31F8: llvm::AsmPrinter::EmitFunctionBody() (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5170 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xD0A9398: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4d20 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCD4CF2C: llvm::MCELFStreamer::EmitInstToData(llvm::MCInst const&, llvm::MCSubtargetInfo const&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef4820 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC514E04: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xD0A7DE8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5310 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+==11222== Invalid write of size 8
+==11222==    at 0xCD25714: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222==  Address 0x15ef5190 is on thread 18's stack
+==11222==  112 bytes below stack pointer
+==11222== 
+[2025-11-13 22:46:57.271] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC6C1EAC: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC6C1EB8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC6C28A0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC6BE19C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC6C31B4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC6C31C8: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC6BE2E0: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC6BE334: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC84C8E4: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC84C938: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC84C948: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC84C88C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC84C890: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC84C910: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC9468A8: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC9468AC: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC9468B0: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC946900: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC946910: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC946888: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC9468BC: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC9468CC: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC9468DC: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC9468E8: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC9468F0: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC9468F8: void std::__chunk_insertion_sort<llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter>(llvm::reassociate::ValueEntry*, llvm::reassociate::ValueEntry*, long, __gnu_cxx::__ops::_Iter_less_iter) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC940068: llvm::ReassociatePass::ReassociateExpression(llvm::BinaryOperator*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC9400A0: llvm::ReassociatePass::ReassociateExpression(llvm::BinaryOperator*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC94005C: llvm::ReassociatePass::ReassociateExpression(llvm::BinaryOperator*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC9385FC: llvm::ReassociatePass::RewriteExprTree(llvm::BinaryOperator*, llvm::SmallVectorImpl<llvm::reassociate::ValueEntry>&) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xCC30034: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xCC30298: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC15F97C: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC25A0A8: llvm::MachineTraceMetrics::Ensemble::computeInstrHeights(llvm::MachineBasicBlock const*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0x4847CC0: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC25A2AC: llvm::MachineTraceMetrics::Ensemble::computeInstrHeights(llvm::MachineBasicBlock const*) (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC25AA6C: llvm::MachineTraceMetrics::Trace::getResourceLength(llvm::ArrayRef<llvm::MachineBasicBlock const*>, llvm::ArrayRef<llvm::MCSchedClassDesc const*>, llvm::ArrayRef<llvm::MCSchedClassDesc const*>) const (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC25AA7C: llvm::MachineTraceMetrics::Trace::getResourceLength(llvm::ArrayRef<llvm::MachineBasicBlock const*>, llvm::ArrayRef<llvm::MCSchedClassDesc const*>, llvm::ArrayRef<llvm::MCSchedClassDesc const*>) const (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC25AAF4: llvm::MachineTraceMetrics::Trace::getResourceLength(llvm::ArrayRef<llvm::MachineBasicBlock const*>, llvm::ArrayRef<llvm::MCSchedClassDesc const*>, llvm::ArrayRef<llvm::MCSchedClassDesc const*>) const (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC25ADB4: llvm::MachineTraceMetrics::Trace::getResourceLength(llvm::ArrayRef<llvm::MachineBasicBlock const*>, llvm::ArrayRef<llvm::MCSchedClassDesc const*>, llvm::ArrayRef<llvm::MCSchedClassDesc const*>) const (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC25ADCC: llvm::MachineTraceMetrics::Trace::getResourceLength(llvm::ArrayRef<llvm::MachineBasicBlock const*>, llvm::ArrayRef<llvm::MCSchedClassDesc const*>, llvm::ArrayRef<llvm::MCSchedClassDesc const*>) const (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+[2025-11-13 22:46:59.946] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:46:59.949] [warning] [Lynsyn] Failed to get sample (#1)  backoff 250 ms
+==11222== Use of uninitialised value of size 8
+==11222==    at 0xC2C6014: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC31E364: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C7740: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Conditional jump or move depends on uninitialised value(s)
+==11222==    at 0xC1C7764: ??? (in /usr/lib/aarch64-linux-gnu/libLLVM-10.so.1)
+==11222== 
+==11222== Thread 13 llvmpipe-3:
+==11222== Invalid write of size 8
+==11222==    at 0x4028D70: ???
+==11222==  Address 0x11aa2400 is on thread 13's stack
+==11222==  160 bytes below stack pointer
+==11222== 
+[2025-11-13 22:47:01.558] [warning] [Lynsyn] Failed to get sample (#2)  backoff 500 ms
+[2025-11-13 22:47:01.559] [warning] [Lynsyn] Attempting device-only reset + re-arm
+[2025-11-13 22:47:01.951] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:47:02.021] [info] [LynsynMonitorConcrete] Lynsyn re-armed after device-only reset
+[2025-11-13 22:47:02.238] [warning] [Aggregator] mergeDisplay(3): Frame not found. Discarding.
+[2025-11-13 22:47:02.459] [warning] [Aggregator] beginFrame(7): low FPS (0.03158958807177154) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:02.483] [info] [AlgorithmConcrete] Frame 7: windowFPS=0.1, windowAvg=44.11ms, mode=Invert
+[2025-11-13 22:47:03.496] [warning] [Aggregator] mergeDisplay(6): Frame not found. Discarding.
+[2025-11-13 22:47:03.647] [warning] [Aggregator] beginFrame(10): low FPS (0.9017132551848512) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:03.672] [info] [AlgorithmConcrete] Frame 10: windowFPS=2.5, windowAvg=22.90ms, mode=Invert
+[2025-11-13 22:47:04.799] [info] [AlgorithmConcrete] Frame 22: windowFPS=10.6, windowAvg=18.52ms, mode=Invert
+[2025-11-13 22:47:06.170] [warning] [Aggregator] mergeDisplay(23): Frame not found. Discarding.
+[2025-11-13 22:47:06.348] [warning] [Aggregator] beginFrame(28): low FPS (0.8539709649871904) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:06.420] [info] [AlgorithmConcrete] Frame 28: windowFPS=3.7, windowAvg=26.50ms, mode=Invert
+[2025-11-13 22:47:07.561] [warning] [Aggregator] mergeDisplay(27): Frame not found. Discarding.
+[2025-11-13 22:47:07.712] [warning] [Aggregator] beginFrame(32): low FPS (0.8849557522123894) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:07.738] [info] [AlgorithmConcrete] Frame 32: windowFPS=3.0, windowAvg=18.95ms, mode=Invert
+[2025-11-13 22:47:09.625] [warning] [Aggregator] mergeDisplay(37): Frame not found. Discarding.
+[2025-11-13 22:47:09.780] [warning] [Aggregator] beginFrame(43): low FPS (0.8298755186721992) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:09.800] [info] [AlgorithmConcrete] Frame 43: windowFPS=5.3, windowAvg=36.58ms, mode=Invert
+[2025-11-13 22:47:10.853] [info] [AlgorithmConcrete] Frame 51: windowFPS=7.6, windowAvg=56.94ms, mode=Invert
+[2025-11-13 22:47:11.988] [info] [AlgorithmConcrete] Frame 62: windowFPS=9.7, windowAvg=36.64ms, mode=Invert
+[2025-11-13 22:47:12.989] [info] [AlgorithmConcrete] Frame 73: windowFPS=11.0, windowAvg=79.98ms, mode=Invert
+[2025-11-13 22:47:14.479] [warning] [Aggregator] mergeDisplay(74): Frame not found. Discarding.
+[2025-11-13 22:47:14.577] [warning] [Aggregator] beginFrame(80): low FPS (0.8583690987124464) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:14.685] [info] [AlgorithmConcrete] Frame 80: windowFPS=4.1, windowAvg=42.07ms, mode=Invert
+[2025-11-13 22:47:16.276] [warning] [Aggregator] mergeDisplay(84): Frame not found. Discarding.
+[2025-11-13 22:47:16.435] [warning] [Aggregator] beginFrame(89): low FPS (0.8628127696289906) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:16.459] [info] [AlgorithmConcrete] Frame 89: windowFPS=5.1, windowAvg=19.60ms, mode=Invert
+[2025-11-13 22:47:17.486] [info] [AlgorithmConcrete] Frame 100: windowFPS=10.7, windowAvg=21.68ms, mode=Invert
+[2025-11-13 22:47:19.035] [warning] [Aggregator] mergeDisplay(103): Frame not found. Discarding.
+[2025-11-13 22:47:19.160] [warning] [Aggregator] beginFrame(108): low FPS (0.9107468123861566) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:19.234] [info] [AlgorithmConcrete] Frame 108: windowFPS=4.6, windowAvg=18.73ms, mode=Invert
+[2025-11-13 22:47:19.444] [warning] [Lynsyn] Failed to get sample (#1)  backoff 250 ms
+[2025-11-13 22:47:21.053] [warning] [Aggregator] mergeDisplay(114): Frame not found. Discarding.
+[2025-11-13 22:47:21.218] [warning] [Aggregator] beginFrame(118): low FPS (0.8244023083264633) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:21.259] [info] [AlgorithmConcrete] Frame 118: windowFPS=4.9, windowAvg=37.61ms, mode=Invert
+[2025-11-13 22:47:22.450] [warning] [Aggregator] mergeDisplay(117): Frame not found. Discarding.
+[2025-11-13 22:47:22.606] [warning] [Aggregator] beginFrame(122): low FPS (0.8396305625524769) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:22.630] [info] [AlgorithmConcrete] Frame 122: windowFPS=2.9, windowAvg=17.58ms, mode=Invert
+[2025-11-13 22:47:23.764] [info] [AlgorithmConcrete] Frame 134: windowFPS=10.6, windowAvg=18.44ms, mode=Invert
+[2025-11-13 22:47:24.214] [warning] [Lynsyn] Failed to get sample (#1)  backoff 250 ms
+[2025-11-13 22:47:25.163] [warning] [Aggregator] mergeDisplay(135): Frame not found. Discarding.
+[2025-11-13 22:47:25.337] [warning] [Aggregator] beginFrame(140): low FPS (0.8285004142502072) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:25.362] [info] [AlgorithmConcrete] Frame 140: windowFPS=3.8, windowAvg=17.91ms, mode=Invert
+[2025-11-13 22:47:25.577] [warning] [Lynsyn] Failed to get sample (#2)  backoff 500 ms
+[2025-11-13 22:47:25.577] [warning] [Lynsyn] Attempting device-only reset + re-arm
+[2025-11-13 22:47:26.373] [info] [AlgorithmConcrete] Frame 151: windowFPS=10.9, windowAvg=19.22ms, mode=Invert
+[2025-11-13 22:47:27.238] [info] [LynsynMonitorConcrete] Lynsyn re-armed after device-only reset
+[2025-11-13 22:47:27.391] [info] [AlgorithmConcrete] Frame 162: windowFPS=10.8, windowAvg=22.11ms, mode=Invert
+[2025-11-13 22:47:28.545] [info] [AlgorithmConcrete] Frame 173: windowFPS=9.5, windowAvg=21.24ms, mode=Invert
+[2025-11-13 22:47:29.708] [info] [AlgorithmConcrete] Frame 186: windowFPS=11.2, windowAvg=28.12ms, mode=Invert
+[2025-11-13 22:47:31.261] [warning] [Aggregator] mergeDisplay(189): Frame not found. Discarding.
+[2025-11-13 22:47:31.417] [warning] [Aggregator] beginFrame(195): low FPS (0.8650519031141869) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:31.481] [info] [AlgorithmConcrete] Frame 195: windowFPS=5.1, windowAvg=22.09ms, mode=Invert
+[2025-11-13 22:47:32.630] [warning] [Aggregator] mergeDisplay(194): Frame not found. Discarding.
+[2025-11-13 22:47:32.821] [warning] [Aggregator] beginFrame(199): low FPS (0.8554319931565441) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:32.844] [info] [AlgorithmConcrete] Frame 199: windowFPS=2.9, windowAvg=21.22ms, mode=Invert
+[2025-11-13 22:47:33.879] [info] [AlgorithmConcrete] Frame 210: windowFPS=10.6, windowAvg=30.23ms, mode=Invert
+[2025-11-13 22:47:34.880] [info] [AlgorithmConcrete] Frame 222: windowFPS=12.0, windowAvg=17.16ms, mode=Invert
+[2025-11-13 22:47:36.235] [warning] [Aggregator] mergeDisplay(222): Frame not found. Discarding.
+[2025-11-13 22:47:36.391] [warning] [Aggregator] beginFrame(227): low FPS (0.8643042350907519) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:36.448] [info] [AlgorithmConcrete] Frame 227: windowFPS=3.2, windowAvg=17.40ms, mode=Invert
+[2025-11-13 22:47:37.578] [warning] [Aggregator] mergeDisplay(226): Frame not found. Discarding.
+[2025-11-13 22:47:37.745] [warning] [Aggregator] beginFrame(231): low FPS (0.8865248226950354) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:37.816] [info] [AlgorithmConcrete] Frame 231: windowFPS=2.9, windowAvg=34.38ms, mode=Invert
+[2025-11-13 22:47:38.966] [warning] [Aggregator] mergeDisplay(230): Frame not found. Discarding.
+[2025-11-13 22:47:39.120] [warning] [Aggregator] beginFrame(235): low FPS (0.8525149190110827) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:39.181] [info] [AlgorithmConcrete] Frame 235: windowFPS=2.9, windowAvg=33.47ms, mode=Invert
+[2025-11-13 22:47:40.349] [warning] [Aggregator] mergeDisplay(234): Frame not found. Discarding.
+[2025-11-13 22:47:40.504] [warning] [Aggregator] beginFrame(239): low FPS (0.8583690987124464) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:40.568] [info] [AlgorithmConcrete] Frame 239: windowFPS=2.9, windowAvg=22.98ms, mode=Invert
+[2025-11-13 22:47:41.715] [warning] [Aggregator] mergeDisplay(238): Frame not found. Discarding.
+[2025-11-13 22:47:41.874] [warning] [Aggregator] beginFrame(243): low FPS (0.8771929824561403) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:41.935] [info] [AlgorithmConcrete] Frame 243: windowFPS=2.9, windowAvg=20.98ms, mode=Invert
+[2025-11-13 22:47:43.111] [warning] [Aggregator] mergeDisplay(242): Frame not found. Discarding.
+[2025-11-13 22:47:43.281] [warning] [Aggregator] beginFrame(247): low FPS (0.8257638315441783) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:43.327] [info] [AlgorithmConcrete] Frame 247: windowFPS=2.9, windowAvg=51.66ms, mode=Invert
+[2025-11-13 22:47:44.403] [warning] [Lynsyn] Failed to get sample (#1)  backoff 250 ms
+[2025-11-13 22:47:44.412] [info] [AlgorithmConcrete] Frame 258: windowFPS=10.1, windowAvg=22.62ms, mode=Invert
+[2025-11-13 22:47:46.080] [warning] [Aggregator] mergeDisplay(261): Frame not found. Discarding.
+[2025-11-13 22:47:46.298] [warning] [Aggregator] beginFrame(267): low FPS (0.8136696501220505) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:46.360] [info] [AlgorithmConcrete] Frame 267: windowFPS=4.6, windowAvg=25.53ms, mode=Invert
+[2025-11-13 22:47:47.506] [warning] [Aggregator] mergeDisplay(266): Frame not found. Discarding.
+[2025-11-13 22:47:47.668] [warning] [Aggregator] beginFrame(271): low FPS (0.8453085376162299) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:47.714] [info] [AlgorithmConcrete] Frame 271: windowFPS=3.0, windowAvg=30.16ms, mode=Invert
+[2025-11-13 22:47:48.919] [warning] [Aggregator] mergeDisplay(270): Frame not found. Discarding.
+[2025-11-13 22:47:49.086] [warning] [Aggregator] beginFrame(275): low FPS (0.8561643835616438) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:49.277] [warning] [Lynsyn] Failed to get sample (#1)  backoff 250 ms
+[2025-11-13 22:47:49.278] [info] [AlgorithmConcrete] Frame 275: windowFPS=2.6, windowAvg=53.53ms, mode=Invert
+[2025-11-13 22:47:50.328] [warning] [Aggregator] mergeDisplay(274): Frame not found. Discarding.
+[2025-11-13 22:47:50.490] [warning] [Aggregator] beginFrame(279): low FPS (0.8244023083264633) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:50.518] [info] [AlgorithmConcrete] Frame 279: windowFPS=3.2, windowAvg=20.96ms, mode=Invert
+[2025-11-13 22:47:50.697] [warning] [Lynsyn] Failed to get sample (#2)  backoff 500 ms
+[2025-11-13 22:47:50.697] [warning] [Lynsyn] Attempting device-only reset + re-arm
+[2025-11-13 22:47:51.426] [info] [LynsynMonitorConcrete] Lynsyn re-armed after device-only reset
+^Z[2025-11-13 22:47:52.336] [warning] [Aggregator] mergeDisplay(285): Frame not found. Discarding.
+[2025-11-13 22:47:52.490] [warning] [Aggregator] beginFrame(290): low FPS (0.8841732979664014) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:52.555] [info] [AlgorithmConcrete] Frame 290: windowFPS=5.4, windowAvg=38.39ms, mode=Invert
+z[2025-11-13 22:47:53.742] [warning] [Aggregator] mergeDisplay(289): Frame not found. Discarding.
+[2025-11-13 22:47:53.910] [warning] [Aggregator] beginFrame(294): low FPS (0.823045267489712) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:53.954] [info] [AlgorithmConcrete] Frame 294: windowFPS=2.9, windowAvg=50.64ms, mode=Invert
+[2025-11-13 22:47:55.127] [warning] [Aggregator] mergeDisplay(293): Frame not found. Discarding.
+[2025-11-13 22:47:55.276] [warning] [Aggregator] beginFrame(298): low FPS (0.8688097306689835) or missing dims; accepting partial frame for CSV
+[2025-11-13 22:47:55.411] [info] [AlgorithmConcrete] Frame 298: windowFPS=2.7, windowAvg=26.46ms, mode=Invert
+[2025-11-13 22:47:56.621] [warning] [Aggregator] mergeDisplay(297): Frame not found. Discarding.
+[2025-11-13 22:47:56.631] [info] [DisplayModule] Render loop finished.
+[2025-11-13 22:47:57.622] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:47:59.623] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:48:01.625] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:48:03.627] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:48:05.629] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:48:07.630] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:48:08.128] [warning] [Lynsyn] Failed to get sample (#1)  backoff 250 ms
+[2025-11-13 22:48:09.632] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:48:11.634] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:48:12.680] [warning] [Lynsyn] Failed to get sample (#1)  backoff 250 ms
+[2025-11-13 22:48:13.637] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:48:14.031] [warning] [Lynsyn] Failed to get sample (#2)  backoff 500 ms
+[2025-11-13 22:48:14.032] [warning] [Lynsyn] Attempting device-only reset + re-arm
+[2025-11-13 22:48:14.435] [info] [LynsynMonitorConcrete] Lynsyn re-armed after device-only reset
+[2025-11-13 22:48:15.638] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:48:17.640] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+[2025-11-13 22:48:19.642] [warning] [DataConcrete] select() timeout in capture thread, no frame received in 2s.
+Killed
+ansorosa@jetson:~/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_39/build$ z

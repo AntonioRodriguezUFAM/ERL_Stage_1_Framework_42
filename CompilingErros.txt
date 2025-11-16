@@ -1,0 +1,176 @@
+
+## Run time logs -  to evalute funcionality
+## // Compiling errors to be address 
+
+^  
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:374:3: warning: style of line directive is a GCC extension
+ 
+   ^  
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:377:3: warning: style of line directive is a GCC extension
+tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:2:3: warning: style of line directive is a GCC extension
+In file included from /home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/Modules.hpp:55,
+                 from /home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/ConfigManager.hpp:30,
+                 from /home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/SampleTestIntegrationCode_v16.cpp:22:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h: In member function ‘virtual void SystemMetricsAggregatorConcreteV3_2::mergeDisplay(uint64_t, const DisplayStats&)’:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:497:34: error: ‘integrateSoCInWindow’ was not declared in this scope
+  497 |                 it->second.soc = integrateSoCInWindow(it->second.algStartTime, it->second.algEndTime);
+      |                                  ^~~~~~~~~~~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:498:36: error: ‘integratePowerInWindow’ was not declared in this scope
+  498 |                 it->second.power = integratePowerInWindow(it->second.algStartTime, it->second.algEndTime);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:46:3: warning: style of line directive is a GCC extension
+     const int x = blockIdx.x * blockDim.x + threadIdx.x;
+   ^ 
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:46:3: warning: style of line directive is a GCC extension
+     const int x = blockIdx.x * blockDim.x + threadIdx.x;
+   ^ 
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:74:3: warning: style of line directive is a GCC extension
+ 
+   ^
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/tmp/tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:2:3: warning: style of line directive is a GCC extension
+ #pragma GCC diagnostic ignored "-Wunused-function"
+   ^~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:76:3: warning: style of line directive is a GCC extension
+                                    int width, int height, int windowSize) {
+   ^ 
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:77:3: warning: style of line directive is a GCC extension
+     const int x = blockIdx.x * blockDim.x + threadIdx.x;
+   ^ ~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:112:3: warning: style of line directive is a GCC extension
+ 
+   ^
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/tmp/tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:2:3: warning: style of line directive is a GCC extension
+ #pragma GCC diagnostic ignored "-Wunused-function"
+   ^~~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:114:3: warning: style of line directive is a GCC extension
+                                 int width, int height) {
+   ^  
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:115:3: warning: style of line directive is a GCC extension
+     const int x = blockIdx.x * blockDim.x + threadIdx.x;
+   ^ ~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:122:3: warning: style of line directive is a GCC extension
+ 
+   ^
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/tmp/tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:2:3: warning: style of line directive is a GCC extension
+ #pragma GCC diagnostic ignored "-Wunused-function"
+   ^~~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:124:3: warning: style of line directive is a GCC extension
+                             int width, int height,
+   ^  
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:126:3: warning: style of line directive is a GCC extension
+     const int x = blockIdx.x * blockDim.x + threadIdx.x;
+   ^ ~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:144:3: warning: style of line directive is a GCC extension
+ 
+   ^
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/tmp/tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:2:3: warning: style of line directive is a GCC extension
+ #pragma GCC diagnostic ignored "-Wunused-function"
+   ^~~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:146:3: warning: style of line directive is a GCC extension
+                                              int width, int height,
+   ^  
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:148:3: warning: style of line directive is a GCC extension
+     const int x = blockIdx.x * blockDim.x + threadIdx.x;
+   ^ ~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:165:3: warning: style of line directive is a GCC extension
+ 
+   ^
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/tmp/tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:2:3: warning: style of line directive is a GCC extension
+ #pragma GCC diagnostic ignored "-Wunused-function"
+   ^~~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:167:3: warning: style of line directive is a GCC extension
+                                            int width, int height,
+   ^  
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:169:3: warning: style of line directive is a GCC extension
+     const int x = blockIdx.x * blockDim.x + threadIdx.x;
+   ^ ~
+In file included from tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:1:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Stage_01/Concretes/AlgorithmConcreteKernels.cu:186:3: warning: style of line directive is a GCC extension
+ 
+   ^
+tmpxft_000061be_00000000-5_AlgorithmConcreteKernels.cudafe1.stub.c:2:3: warning: style of line directive is a GCC extension
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h: In function ‘JetsonNanoInfo integrateSoCInWindow(std::chrono::_V2::system_clock::time_point, std::chrono::_V2::system_clock::time_point)’:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1230:9: error: ‘socHistory_’ was not declared in this scope
+ 1230 |     if (socHistory_.empty() || end <= start) return avgStats;
+      |         ^~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1234:26: error: ‘socHistory_’ was not declared in this scope
+ 1234 |     for (const auto& s : socHistory_) {
+      |                          ^~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1243:24: error: ‘socHistory_’ was not declared in this scope
+ 1243 |         for (auto it = socHistory_.rbegin(); it != socHistory_.rend(); ++it) {
+      |                        ^~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1248:16: error: ‘socHistory_’ was not declared in this scope
+ 1248 |         return socHistory_.back(); // Last resort
+      |                ^~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h: In function ‘PowerStats integratePowerInWindow(std::chrono::_V2::system_clock::time_point, std::chrono::_V2::system_clock::time_point)’:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1388:13: error: ‘powerHistory_’ was not declared in this scope
+ 1388 |         if (powerHistory_.empty() || end <= start) return avgStats;
+      |             ^~~~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1393:24: error: ‘powerHistory_’ was not declared in this scope
+ 1393 |         for (auto it = powerHistory_.rbegin(); it != powerHistory_.rend(); ++it) {
+      |                        ^~~~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1402:30: error: ‘powerHistory_’ was not declared in this scope
+ 1402 |         for (const auto& s : powerHistory_) {
+      |                              ^~~~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1409:21: error: ‘powerHistory_’ was not declared in this scope
+ 1409 |              return powerHistory_.back(); // Fallback
+      |                     ^~~~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1413:30: error: ‘powerHistory_’ was not declared in this scope
+ 1413 |         for (const auto& s : powerHistory_) {
+      |                              ^~~~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1429:16: warning: unused variable ‘window_duration_sec’ [-Wunused-variable]
+ 1429 |         double window_duration_sec = std::chrono::duration<double>(end - start).count();
+      |                ^~~~~~~~~~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h: At global scope:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1470:20: error: redefinition of ‘JetsonNanoInfo integrateSoCInWindow(std::chrono::_V2::system_clock::time_point, std::chrono::_V2::system_clock::time_point)’
+ 1470 |     JetsonNanoInfo integrateSoCInWindow(
+      |                    ^~~~~~~~~~~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1224:16: note: ‘JetsonNanoInfo integrateSoCInWindow(std::chrono::_V2::system_clock::time_point, std::chrono::_V2::system_clock::time_point)’ previously defined here
+ 1224 | JetsonNanoInfo integrateSoCInWindow(
+      |                ^~~~~~~~~~~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h: In function ‘JetsonNanoInfo integrateSoCInWindow(std::chrono::_V2::system_clock::time_point, std::chrono::_V2::system_clock::time_point)’:
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1475:13: error: ‘socHistory_’ was not declared in this scope
+ 1475 |         if (socHistory_.empty() || end <= start) return avgStats;
+      |             ^~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1479:24: error: ‘socHistory_’ was not declared in this scope
+ 1479 |         for (auto it = socHistory_.rbegin(); it != socHistory_.rend(); ++it) {
+      |                        ^~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1487:30: error: ‘socHistory_’ was not declared in this scope
+ 1487 |         for (const auto& s : socHistory_) {
+      |                              ^~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1492:30: error: ‘socHistory_’ was not declared in this scope
+ 1492 |         for (const auto& s : socHistory_) {
+      |                              ^~~~~~~~~~~
+/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/Module/../Stage_01/Concretes/SystemMetricsAggregatorConcrete_v3_2.h:1500:38: error: ‘socHistory_’ was not declared in this scope
+ 1500 |             return samples.empty() ? socHistory_.back() : samples.front().get();
+      |                                      ^~~~~~~~~~~
+CMakeFiles/MySystem.dir/build.make:75: recipe for target 'CMakeFiles/MySystem.dir/SampleTestIntegrationCode_v16.cpp.o' failed
+make[2]: *** [CMakeFiles/MySystem.dir/SampleTestIntegrationCode_v16.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+CMakeFiles/Makefile2:82: recipe for target 'CMakeFiles/MySystem.dir/all' failed
+make[1]: *** [CMakeFiles/MySystem.dir/all] Error 2
+Makefile:90: recipe for target 'all' failed
+make: *** [all] Error 2
+ansorosa@jetson:~/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_38/build$ 

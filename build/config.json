@@ -1,0 +1,62 @@
+{
+    "metrics_csv": "metrics_csv/realtime_metrics_010.csv",
+    "metrics_json": "metrics_csv/realtime_metrics010.ndjson",
+    "retention_window_sec": 2000,
+    "CameraConfig": {
+        "width": 320,
+        "height": 240,
+        "fps": 30,
+        "pixelFormat": "YUYV"
+    },
+    "DisplayConfig": {
+        "width": 320,
+        "height": 240,
+        "fullscreen": false,
+        "vsync": true
+    },
+    "AlgorithmConfig": {
+        "algorithmType": "Invert",
+        "concurrencyLevel": 4,
+        "blurRadius": 5,
+        "useGPU": false
+    },
+    "SoCConfig": {
+        "pollIntervalMs":100,
+        "customCommand": "tegrastats --interval 100",
+        "exportCSV": false,
+        "csvPath": ""
+    },
+    "LynsynMonitorConfig": {
+        "enabled": true,  
+        "periodSampling": true,
+        "device_path": "../../build/lynsyn-host-software/liblynsyn",
+        "outputCSV": "metrics_csv/lynsyn_output.csv",
+        "durationSec": 5.0,
+        "coreMask": 15,
+        "startBreakpoint": 0,
+        "endBreakpoint": 0,
+        "sampleRateMs": 100,
+        "period_ms": 100
+    },
+    "Profiling": {
+        "metricsOutputFile": "metrics_csv/PerformanceMetrics.csv",
+        "samplingIntervalMs": 100
+    },
+    "SystemBehavior": {
+        "autoRunDurationSec": 150,
+        "pauseDurationSec": 1,
+        "targetFPS": 60
+    },
+    "Aggregator": {
+        "flush_period_ms": 1000,
+        "json_flush_threshold": 1000,
+        "merge_wait_ms": 2000,
+        "drop_empty_compat_rows": true,
+        "drop_empty_flush_rows": true,
+        "expectsCamera":    true,
+        "expectsAlgorithm": true,
+        "expectsDisplay":   true,
+        "expectsSoC":       true,
+        "expectsPower":     true
+    }
+}
