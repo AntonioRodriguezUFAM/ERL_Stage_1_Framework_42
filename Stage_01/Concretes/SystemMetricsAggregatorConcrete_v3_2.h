@@ -274,6 +274,16 @@ const AggregatorConfig& getConfig() const { return aggConfig_; }
     if (jofs_.is_open()) jofs_.close();
 }
 
+//==========================================================================================================
+void forceFlushBatch() {
+    std::lock_guard<std::mutex> lock(batchMutex_);
+    //flushBatchBuffer();
+    if (!batchBuffer_.empty()) {
+        flushBatchBuffer();
+    }
+}
+
+//=================================================================================================
     void beginFrame(uint64_t frameId, const CameraStats& stats) override {
         if (stopping_) return;
         CameraStats s = stats;
@@ -885,7 +895,9 @@ const AggregatorConfig& getConfig() const { return aggConfig_; }
         }
     }
 
-    void forceFlushBatch() { flushBatchBuffer(); }
+    //void forceFlushBatch() { flushBatchBuffer(); }
+
+    
 
 
     //====================================================================

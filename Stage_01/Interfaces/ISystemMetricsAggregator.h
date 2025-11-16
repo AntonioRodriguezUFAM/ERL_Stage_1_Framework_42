@@ -143,6 +143,9 @@ class ISystemMetricsAggregator {
 public:
     virtual ~ISystemMetricsAggregator() = default;
 
+    // In ISystemMetricsAggregator.h
+    virtual void forceFlushBatch() = 0;
+
     virtual void pushMetrics(const time_point& timestamp, std::function<void(SystemMetricsSnapshot&)> updateFn) = 0;
     virtual SystemMetricsSnapshot getLatestSnapshot() const = 0;
     virtual void exportToCSV(const std::string& filePath) = 0;

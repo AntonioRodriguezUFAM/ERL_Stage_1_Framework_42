@@ -1,0 +1,610 @@
+GNU gdb (Ubuntu 10.2-0ubuntu1~18.04~2) 10.2
+Copyright (C) 2021 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "aarch64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./MySystem...
+(gdb) run
+Starting program: /home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_42/build/MySystem 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/aarch64-linux-gnu/libthread_db.so.1".
+[2025-11-16 21:09:45.531] [info] Starting Refactored Pipeline...
+[New Thread 0x7fb787bed0 (LWP 13275)]
+[2025-11-16 21:09:45.532] [info] Thread pool started with 2 threads
+[New Thread 0x7fb707aed0 (LWP 13276)]
+[2025-11-16 21:09:45.532] [info] Loaded configuration from config.json
+[2025-11-16 21:09:45.533] [info] Created directory: metrics_csv
+[2025-11-16 21:09:45.533] [info] Loaded configuration from config.json
+[2025-11-16 21:09:45.533] [info] [SharedQueue] Initialized with maxSize: 200.
+[2025-11-16 21:09:45.533] [info] [SharedQueue] Initialized with maxSize: 200.
+[2025-11-16 21:09:45.533] [info] [SharedQueue] Initialized with maxSize: 300.
+[2025-11-16 21:09:45.533] [info] [ConfigManager] Queues created: cam2Alg=200, cam2Disp=200, alg2Disp=300
+[2025-11-16 21:09:45.533] [info] [Aggregator] CSV path resolved to: '/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_42/build/metrics_csv/realtime_metrics_010.csv'
+[2025-11-16 21:09:45.533] [info] [Aggregator] JSON path resolved to: '/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_42/build/metrics_csv/realtime_metrics010.ndjson'
+[2025-11-16 21:09:45.533] [info] [Aggregator] cfg: expectsPower=true, expectsCamera=true, expectsAlgorithm=true, expectsDisplay=true, expectsSoC=true, merge_wait_ms=2000ms, flush_period_ms=1000ms, retention=2000s, prune_max=5s, dropEmptyCompat=true, dropEmptyOnFlush=true, json_flush_threshold=1000 flushes, csv='/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_42/build/metrics_csv/realtime_metrics_010.csv', json='/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_42/build/metrics_csv/realtime_metrics010.ndjson'
+[2025-11-16 21:09:45.533] [info] [ConfigManager] Aggregator initialized: merge_wait_ms=2000ms, retention=2000s
+[2025-11-16 21:09:45.533] [info] [LynsynModule] Validating configuration...
+[New Thread 0x7fb6879ed0 (LWP 13277)]
+[2025-11-16 21:09:45.534] [info] [LynsynModule] Ensured directory: /home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_42/build/metrics_csv
+[2025-11-16 21:09:45.534] [info] [LynsynModule] Using outputCSV: '/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_42/build/metrics_csv/lynsyn_output.csv'
+[2025-11-16 21:09:45.534] [info] [ConfigManager] Lynsyn module initialized.
+[2025-11-16 21:09:45.534] [info] [CameraModule] Validating configuration...
+[2025-11-16 21:09:45.534] [info] [AlgorithmModule] Validating configuration...
+[2025-11-16 21:09:45.534] [info] [DisplayModule] Validating configuration...
+[2025-11-16 21:09:45.534] [info] [ConfigManager] Pipeline built: 5 modules.
+[2025-11-16 21:09:45.534] [info] Run duration set to 150 seconds
+[2025-11-16 21:09:45.534] [info] [LynsynModule] Validating configuration...
+[2025-11-16 21:09:45.534] [info] [LynsynModule] Ensured directory: /home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_42/build/metrics_csv
+[2025-11-16 21:09:45.534] [info] [LynsynModule] Using outputCSV: '/home/ansorosa/Desktop/CODE_REPOSITORIO/ERL_Stage_1_Framework_42/build/metrics_csv/lynsyn_output.csv'
+[2025-11-16 21:09:45.534] [info] [CameraModule] Validating configuration...
+[2025-11-16 21:09:45.534] [info] [AlgorithmModule] Validating configuration...
+[2025-11-16 21:09:45.534] [info] [DisplayModule] Validating configuration...
+[2025-11-16 21:09:45.534] [info] [ConfigManager] All modules validated.
+[2025-11-16 21:09:45.534] [info] [SoCModule] Starting...
+[Detaching after fork from child process 13278]
+[New Thread 0x7fb6078ed0 (LWP 13281)]
+[2025-11-16 21:09:46.149] [info] [SoCConcrete] SoC monitoring started with command 'tegrastats --interval 500'.
+[2025-11-16 21:09:46.149] [info] [SoCModule] Started.
+[2025-11-16 21:09:46.149] [info] [LynsynModule] Starting...
+[2025-11-16 21:09:46.149] [info] [LynsynMonitorConcrete] Initializing Lynsyn library...
+[New Thread 0x7fb5877ed0 (LWP 13282)]
+Unsupported Lynsyn HW version: 0
+Unsupported Lynsyn SW Version: 0
+[2025-11-16 21:09:46.178] [warning] [LynsynMonitorConcrete] lynsyn_init() failed (attempt 1/5). Retrying in 800 ms...
+[Thread 0x7fb5877ed0 (LWP 13282) exited]
+[New Thread 0x7fb5877ed0 (LWP 13283)]
+USB OUT transfer error: LIBUSB_ERROR_TIMEOUT
+Unsupported Lynsyn SW Version: ea
+[2025-11-16 21:09:47.996] [warning] [LynsynMonitorConcrete] lynsyn_init() failed (attempt 2/5). Retrying in 800 ms...
+[Thread 0x7fb5877ed0 (LWP 13283) exited]
+[New Thread 0x7fb5877ed0 (LWP 13284)]
+USB OUT transfer error: LIBUSB_ERROR_TIMEOUT
+Unsupported Lynsyn SW Version: ea
+[2025-11-16 21:09:49.804] [warning] [LynsynMonitorConcrete] lynsyn_init() failed (attempt 3/5). Retrying in 800 ms...
+[Thread 0x7fb5877ed0 (LWP 13284) exited]
+[New Thread 0x7fb5877ed0 (LWP 13285)]
+USB OUT transfer error: LIBUSB_ERROR_TIMEOUT
+Unsupported Lynsyn SW Version: ea
+[2025-11-16 21:09:51.618] [warning] [LynsynMonitorConcrete] lynsyn_init() failed (attempt 4/5). Retrying in 800 ms...
+[Thread 0x7fb5877ed0 (LWP 13285) exited]
+[New Thread 0x7fb5877ed0 (LWP 13287)]
+USB OUT transfer error: LIBUSB_ERROR_TIMEOUT
+Unsupported Lynsyn SW Version: ea
+[2025-11-16 21:09:53.425] [warning] [LynsynMonitorConcrete] lynsyn_init() failed (attempt 5/5). Retrying in 800 ms...
+[Thread 0x7fb5877ed0 (LWP 13287) exited]
+[2025-11-16 21:09:54.225] [error] [LynsynMonitorConcrete] Failed to initialize Lynsyn after retries
+[2025-11-16 21:09:54.226] [error] [LynsynModule] configure/initialize failed; disabling power expectations.
+[2025-11-16 21:09:54.226] [info] [Aggregator] Updated expectsPower to: false
+[2025-11-16 21:09:54.226] [info] [LynsynMonitorConcrete] Monitoring stopped
+[2025-11-16 21:09:54.226] [info] [CameraModule] Starting...
+[2025-11-16 21:09:54.226] [info] [DataConcrete] Attempting to open device at /dev/video0.
+[2025-11-16 21:09:54.411] [info] [DataConcrete] Device opened: /dev/video0 (fd=7)
+[2025-11-16 21:09:54.438] [info] Format locked: 320x240 YUYV
+[2025-11-16 21:09:54.464] [info] [DataConcrete] CONFIGURED: 320x240 YUYV @ 30 FPS, 8 buffers → READY TO STREAM
+[2025-11-16 21:09:54.479] [info] [DataConcrete] Streaming STARTED
+[New Thread 0x7fb5877ed0 (LWP 13288)]
+[2025-11-16 21:09:54.482] [info] [CameraModule] Streaming started.
+[2025-11-16 21:09:54.482] [info] [AlgorithmModule] Starting...
+[2025-11-16 21:09:54.482] [info] [AlgorithmConcrete] Constructed with ZeroCopy queues.
+[2025-11-16 21:09:54.483] [info] [DataConcrete] Capture thread STARTED
+[2025-11-16 21:09:54.494] [info] [AlgorithmConcrete] Thread started, mode: Invert.
+[2025-11-16 21:09:54.494] [info] [AlgorithmModule] Started.
+[2025-11-16 21:09:54.494] [info] [DisplayModule] Starting...
+[New Thread 0x7fb4f6ced0 (LWP 13289)]
+[Detaching after fork from child process 13290]
+[2025-11-16 21:09:55.967] [info] [DebugID] beginFrame frameId=0
+[2025-11-16 21:09:55.967] [info] FIRST FRAME!
+[2025-11-16 21:09:55.969] [info] [DebugID] mergeAlgorithm frameId=0
+[2025-11-16 21:09:55.969] [info] [AlgorithmConcrete] Frame 0: windowFPS=0.7, windowAvg=1.37ms, mode=Invert
+[2025-11-16 21:09:56.047] [info] [DebugID] beginFrame frameId=1
+[2025-11-16 21:09:56.047] [warning] [Aggregator] beginFrame(1): low FPS (0.6720430107526881) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:09:56.053] [info] [DebugID] mergeAlgorithm frameId=1
+[2025-11-16 21:09:56.123] [info] [DebugID] beginFrame frameId=2
+[2025-11-16 21:09:56.126] [info] [DebugID] mergeAlgorithm frameId=2
+[2025-11-16 21:09:56.199] [info] [DebugID] beginFrame frameId=3
+[2025-11-16 21:09:56.204] [info] [DebugID] mergeAlgorithm frameId=3
+[2025-11-16 21:09:56.279] [info] [DebugID] beginFrame frameId=4
+[2025-11-16 21:09:56.282] [info] [DebugID] mergeAlgorithm frameId=4
+[2025-11-16 21:09:56.355] [info] [DebugID] beginFrame frameId=5
+[2025-11-16 21:09:56.360] [info] [DebugID] mergeAlgorithm frameId=5
+[2025-11-16 21:09:56.435] [info] [DebugID] beginFrame frameId=6
+[2025-11-16 21:09:56.438] [info] [DebugID] mergeAlgorithm frameId=6
+[2025-11-16 21:09:56.511] [info] [DebugID] beginFrame frameId=7
+[2025-11-16 21:09:56.517] [info] [DebugID] mergeAlgorithm frameId=7
+[New Thread 0x7fae71ded0 (LWP 13319)]
+[New Thread 0x7fadf1ced0 (LWP 13320)]
+[New Thread 0x7fad71bed0 (LWP 13321)]
+[New Thread 0x7facf1aed0 (LWP 13322)]
+[New Thread 0x7f93ffeed0 (LWP 13323)]
+[New Thread 0x7f937fded0 (LWP 13324)]
+[New Thread 0x7f92ffced0 (LWP 13325)]
+[New Thread 0x7f927fbed0 (LWP 13326)]
+[2025-11-16 21:09:58.242] [info] [SdlDisplayConcrete] SDL display initialized: 320x240
+[New Thread 0x7f91ffaed0 (LWP 13327)]
+[2025-11-16 21:09:58.262] [info] [DisplayModule] Render loop started.
+[2025-11-16 21:09:58.264] [info] [ConfigManager] All modules started.
+[New Thread 0x7f917f9ed0 (LWP 13328)]
+[2025-11-16 21:09:58.375] [info] [DebugID] beginFrame frameId=8
+[2025-11-16 21:09:58.375] [warning] [Aggregator] beginFrame(8): low FPS (0.5364806866952789) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:09:58.378] [info] [DebugID] mergeAlgorithm frameId=8
+[2025-11-16 21:09:58.378] [info] [AlgorithmConcrete] Frame 8: windowFPS=3.3, windowAvg=1.36ms, mode=Invert
+[2025-11-16 21:09:58.451] [info] [DebugID] beginFrame frameId=9
+[2025-11-16 21:09:58.457] [info] [DebugID] mergeAlgorithm frameId=9
+[2025-11-16 21:09:58.527] [info] [DebugID] beginFrame frameId=10
+[2025-11-16 21:09:58.530] [info] [DebugID] mergeAlgorithm frameId=10
+[2025-11-16 21:09:58.607] [info] [DebugID] beginFrame frameId=11
+[2025-11-16 21:09:58.613] [info] [DebugID] mergeAlgorithm frameId=11
+[2025-11-16 21:09:58.683] [info] [DebugID] beginFrame frameId=12
+[2025-11-16 21:09:58.686] [info] [DebugID] mergeAlgorithm frameId=12
+[2025-11-16 21:09:58.763] [info] [DebugID] beginFrame frameId=13
+[2025-11-16 21:09:58.770] [info] [DebugID] mergeAlgorithm frameId=13
+[2025-11-16 21:09:58.839] [info] [DebugID] beginFrame frameId=14
+[2025-11-16 21:09:58.843] [info] [DebugID] mergeAlgorithm frameId=14
+[2025-11-16 21:09:59.120] [info] [DebugID] mergeDisplay frameId=7
+[2025-11-16 21:09:59.148] [info] [DebugID] mergeDisplay frameId=14
+[2025-11-16 21:09:59.174] [info] [DebugID] mergeDisplay frameId=14
+[2025-11-16 21:09:59.227] [info] [DebugID] beginFrame frameId=15
+[2025-11-16 21:09:59.231] [info] [DebugID] mergeAlgorithm frameId=15
+[2025-11-16 21:09:59.303] [info] [DebugID] beginFrame frameId=16
+[2025-11-16 21:09:59.306] [info] [DebugID] mergeAlgorithm frameId=16
+[2025-11-16 21:09:59.383] [info] [DebugID] beginFrame frameId=17
+[2025-11-16 21:09:59.389] [info] [DebugID] mergeAlgorithm frameId=17
+[2025-11-16 21:09:59.389] [info] [AlgorithmConcrete] Frame 17: windowFPS=8.9, windowAvg=1.29ms, mode=Invert
+[2025-11-16 21:09:59.459] [info] [DebugID] beginFrame frameId=18
+[2025-11-16 21:09:59.461] [info] [DebugID] mergeAlgorithm frameId=18
+[2025-11-16 21:09:59.554] [info] [DebugID] beginFrame frameId=19
+[2025-11-16 21:09:59.559] [info] [DebugID] mergeAlgorithm frameId=19
+[2025-11-16 21:09:59.615] [info] [DebugID] beginFrame frameId=20
+[2025-11-16 21:09:59.617] [info] [DebugID] mergeAlgorithm frameId=20
+[2025-11-16 21:09:59.695] [info] [DebugID] beginFrame frameId=21
+[2025-11-16 21:09:59.700] [info] [DebugID] mergeAlgorithm frameId=21
+[2025-11-16 21:10:01.175] [warning] [Aggregator] mergeDisplay(14): Frame not found. Discarding.
+[2025-11-16 21:10:01.181] [info] [DebugID] mergeDisplay frameId=21
+[2025-11-16 21:10:01.198] [info] [DebugID] mergeDisplay frameId=21
+[2025-11-16 21:10:01.323] [info] [DebugID] beginFrame frameId=22
+[2025-11-16 21:10:01.323] [warning] [Aggregator] beginFrame(22): low FPS (0.6142506142506142) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:01.327] [info] [DebugID] mergeAlgorithm frameId=22
+[2025-11-16 21:10:01.327] [info] [AlgorithmConcrete] Frame 22: windowFPS=2.6, windowAvg=1.39ms, mode=Invert
+[2025-11-16 21:10:01.399] [info] [DebugID] beginFrame frameId=23
+[2025-11-16 21:10:01.406] [info] [DebugID] mergeAlgorithm frameId=23
+[2025-11-16 21:10:01.479] [info] [DebugID] beginFrame frameId=24
+[2025-11-16 21:10:01.485] [info] [DebugID] mergeAlgorithm frameId=24
+[2025-11-16 21:10:01.555] [info] [DebugID] beginFrame frameId=25
+[2025-11-16 21:10:01.558] [info] [DebugID] mergeAlgorithm frameId=25
+[2025-11-16 21:10:01.635] [info] [DebugID] beginFrame frameId=26
+[2025-11-16 21:10:01.637] [info] [DebugID] mergeAlgorithm frameId=26
+[2025-11-16 21:10:01.711] [info] [DebugID] beginFrame frameId=27
+[2025-11-16 21:10:01.715] [info] [DebugID] mergeAlgorithm frameId=27
+[2025-11-16 21:10:01.787] [info] [DebugID] beginFrame frameId=28
+[2025-11-16 21:10:01.793] [info] [DebugID] mergeAlgorithm frameId=28
+[2025-11-16 21:10:03.198] [warning] [Aggregator] mergeDisplay(21): Frame not found. Discarding.
+[2025-11-16 21:10:03.204] [info] [DebugID] mergeDisplay frameId=28
+[2025-11-16 21:10:03.220] [info] [DebugID] mergeDisplay frameId=28
+[2025-11-16 21:10:03.339] [info] [DebugID] beginFrame frameId=29
+[2025-11-16 21:10:03.339] [warning] [Aggregator] beginFrame(29): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:03.346] [info] [DebugID] mergeAlgorithm frameId=29
+[2025-11-16 21:10:03.346] [info] [AlgorithmConcrete] Frame 29: windowFPS=3.5, windowAvg=1.33ms, mode=Invert
+[2025-11-16 21:10:03.419] [info] [DebugID] beginFrame frameId=30
+[2025-11-16 21:10:03.421] [info] [DebugID] mergeAlgorithm frameId=30
+[2025-11-16 21:10:03.496] [info] [DebugID] beginFrame frameId=31
+[2025-11-16 21:10:03.499] [info] [DebugID] mergeAlgorithm frameId=31
+[2025-11-16 21:10:03.575] [info] [DebugID] beginFrame frameId=32
+[2025-11-16 21:10:03.581] [info] [DebugID] mergeAlgorithm frameId=32
+[2025-11-16 21:10:03.651] [info] [DebugID] beginFrame frameId=33
+[2025-11-16 21:10:03.654] [info] [DebugID] mergeAlgorithm frameId=33
+[2025-11-16 21:10:03.731] [info] [DebugID] beginFrame frameId=34
+[2025-11-16 21:10:03.738] [info] [DebugID] mergeAlgorithm frameId=34
+[2025-11-16 21:10:03.807] [info] [DebugID] beginFrame frameId=35
+[2025-11-16 21:10:03.810] [info] [DebugID] mergeAlgorithm frameId=35
+[2025-11-16 21:10:05.220] [warning] [Aggregator] mergeDisplay(28): Frame not found. Discarding.
+[2025-11-16 21:10:05.226] [info] [DebugID] mergeDisplay frameId=35
+[2025-11-16 21:10:05.242] [info] [DebugID] mergeDisplay frameId=35
+[2025-11-16 21:10:05.359] [info] [DebugID] beginFrame frameId=36
+[2025-11-16 21:10:05.359] [warning] [Aggregator] beginFrame(36): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:05.365] [info] [DebugID] mergeAlgorithm frameId=36
+[2025-11-16 21:10:05.365] [info] [AlgorithmConcrete] Frame 36: windowFPS=3.5, windowAvg=1.28ms, mode=Invert
+[2025-11-16 21:10:05.435] [info] [DebugID] beginFrame frameId=37
+[2025-11-16 21:10:05.441] [info] [DebugID] mergeAlgorithm frameId=37
+[2025-11-16 21:10:05.515] [info] [DebugID] beginFrame frameId=38
+[2025-11-16 21:10:05.518] [info] [DebugID] mergeAlgorithm frameId=38
+[2025-11-16 21:10:05.591] [info] [DebugID] beginFrame frameId=39
+[2025-11-16 21:10:05.593] [info] [DebugID] mergeAlgorithm frameId=39
+[2025-11-16 21:10:05.671] [info] [DebugID] beginFrame frameId=40
+[2025-11-16 21:10:05.676] [info] [DebugID] mergeAlgorithm frameId=40
+[2025-11-16 21:10:05.747] [info] [DebugID] beginFrame frameId=41
+[2025-11-16 21:10:05.754] [info] [DebugID] mergeAlgorithm frameId=41
+[2025-11-16 21:10:05.823] [info] [DebugID] beginFrame frameId=42
+[2025-11-16 21:10:05.828] [info] [DebugID] mergeAlgorithm frameId=42
+[2025-11-16 21:10:07.242] [warning] [Aggregator] mergeDisplay(35): Frame not found. Discarding.
+[2025-11-16 21:10:07.248] [info] [DebugID] mergeDisplay frameId=42
+[2025-11-16 21:10:07.264] [info] [DebugID] mergeDisplay frameId=42
+[2025-11-16 21:10:07.376] [info] [DebugID] beginFrame frameId=43
+[2025-11-16 21:10:07.376] [warning] [Aggregator] beginFrame(43): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:07.378] [info] [DebugID] mergeAlgorithm frameId=43
+[2025-11-16 21:10:07.378] [info] [AlgorithmConcrete] Frame 43: windowFPS=3.5, windowAvg=1.44ms, mode=Invert
+[2025-11-16 21:10:07.456] [info] [DebugID] beginFrame frameId=44
+[2025-11-16 21:10:07.461] [info] [DebugID] mergeAlgorithm frameId=44
+[2025-11-16 21:10:07.531] [info] [DebugID] beginFrame frameId=45
+[2025-11-16 21:10:07.534] [info] [DebugID] mergeAlgorithm frameId=45
+[2025-11-16 21:10:07.612] [info] [DebugID] beginFrame frameId=46
+[2025-11-16 21:10:07.617] [info] [DebugID] mergeAlgorithm frameId=46
+[2025-11-16 21:10:07.687] [info] [DebugID] beginFrame frameId=47
+[2025-11-16 21:10:07.690] [info] [DebugID] mergeAlgorithm frameId=47
+[2025-11-16 21:10:07.764] [info] [DebugID] beginFrame frameId=48
+[2025-11-16 21:10:07.766] [info] [DebugID] mergeAlgorithm frameId=48
+[2025-11-16 21:10:07.843] [info] [DebugID] beginFrame frameId=49
+[2025-11-16 21:10:07.850] [info] [DebugID] mergeAlgorithm frameId=49
+[2025-11-16 21:10:09.265] [warning] [Aggregator] mergeDisplay(42): Frame not found. Discarding.
+[2025-11-16 21:10:09.271] [info] [DebugID] mergeDisplay frameId=49
+[2025-11-16 21:10:09.287] [info] [DebugID] mergeDisplay frameId=49
+[2025-11-16 21:10:09.396] [info] [DebugID] beginFrame frameId=50
+[2025-11-16 21:10:09.396] [warning] [Aggregator] beginFrame(50): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:09.402] [info] [DebugID] mergeAlgorithm frameId=50
+[2025-11-16 21:10:09.402] [info] [AlgorithmConcrete] Frame 50: windowFPS=3.5, windowAvg=1.28ms, mode=Invert
+[2025-11-16 21:10:09.472] [info] [DebugID] beginFrame frameId=51
+[2025-11-16 21:10:09.476] [info] [DebugID] mergeAlgorithm frameId=51
+[2025-11-16 21:10:09.552] [info] [DebugID] beginFrame frameId=52
+[2025-11-16 21:10:09.554] [info] [DebugID] mergeAlgorithm frameId=52
+[2025-11-16 21:10:09.628] [info] [DebugID] beginFrame frameId=53
+[2025-11-16 21:10:09.632] [info] [DebugID] mergeAlgorithm frameId=53
+[2025-11-16 21:10:09.708] [info] [DebugID] beginFrame frameId=54
+[2025-11-16 21:10:09.711] [info] [DebugID] mergeAlgorithm frameId=54
+[2025-11-16 21:10:09.784] [info] [DebugID] beginFrame frameId=55
+[2025-11-16 21:10:09.789] [info] [DebugID] mergeAlgorithm frameId=55
+[2025-11-16 21:10:09.860] [info] [DebugID] beginFrame frameId=56
+[2025-11-16 21:10:09.865] [info] [DebugID] mergeAlgorithm frameId=56
+[2025-11-16 21:10:11.287] [warning] [Aggregator] mergeDisplay(49): Frame not found. Discarding.
+[2025-11-16 21:10:11.292] [info] [DebugID] mergeDisplay frameId=56
+[2025-11-16 21:10:11.308] [info] [DebugID] mergeDisplay frameId=56
+[2025-11-16 21:10:11.412] [info] [DebugID] beginFrame frameId=57
+[2025-11-16 21:10:11.412] [warning] [Aggregator] beginFrame(57): low FPS (0.6447453255963894) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:11.416] [info] [DebugID] mergeAlgorithm frameId=57
+[2025-11-16 21:10:11.416] [info] [AlgorithmConcrete] Frame 57: windowFPS=3.5, windowAvg=1.30ms, mode=Invert
+[2025-11-16 21:10:11.492] [info] [DebugID] beginFrame frameId=58
+[2025-11-16 21:10:11.494] [info] [DebugID] mergeAlgorithm frameId=58
+[2025-11-16 21:10:11.568] [info] [DebugID] beginFrame frameId=59
+[2025-11-16 21:10:11.573] [info] [DebugID] mergeAlgorithm frameId=59
+[2025-11-16 21:10:11.649] [info] [DebugID] beginFrame frameId=60
+[2025-11-16 21:10:11.651] [info] [DebugID] mergeAlgorithm frameId=60
+[2025-11-16 21:10:11.724] [info] [DebugID] beginFrame frameId=61
+[2025-11-16 21:10:11.727] [info] [DebugID] mergeAlgorithm frameId=61
+[2025-11-16 21:10:11.800] [info] [DebugID] beginFrame frameId=62
+[2025-11-16 21:10:11.806] [info] [DebugID] mergeAlgorithm frameId=62
+[2025-11-16 21:10:11.880] [info] [DebugID] beginFrame frameId=63
+[2025-11-16 21:10:11.883] [info] [DebugID] mergeAlgorithm frameId=63
+[2025-11-16 21:10:13.308] [warning] [Aggregator] mergeDisplay(56): Frame not found. Discarding.
+[2025-11-16 21:10:13.314] [info] [DebugID] mergeDisplay frameId=63
+[2025-11-16 21:10:13.330] [info] [DebugID] mergeDisplay frameId=63
+[2025-11-16 21:10:13.432] [info] [DebugID] beginFrame frameId=64
+[2025-11-16 21:10:13.432] [warning] [Aggregator] beginFrame(64): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:13.435] [info] [DebugID] mergeAlgorithm frameId=64
+[2025-11-16 21:10:13.435] [info] [AlgorithmConcrete] Frame 64: windowFPS=3.5, windowAvg=1.40ms, mode=Invert
+[2025-11-16 21:10:13.508] [info] [DebugID] beginFrame frameId=65
+[2025-11-16 21:10:13.513] [info] [DebugID] mergeAlgorithm frameId=65
+[2025-11-16 21:10:13.588] [info] [DebugID] beginFrame frameId=66
+[2025-11-16 21:10:13.591] [info] [DebugID] mergeAlgorithm frameId=66
+[2025-11-16 21:10:13.664] [info] [DebugID] beginFrame frameId=67
+[2025-11-16 21:10:13.665] [info] [DebugID] mergeAlgorithm frameId=67
+[2025-11-16 21:10:13.744] [info] [DebugID] beginFrame frameId=68
+[2025-11-16 21:10:13.749] [info] [DebugID] mergeAlgorithm frameId=68
+[2025-11-16 21:10:13.820] [info] [DebugID] beginFrame frameId=69
+[2025-11-16 21:10:13.822] [info] [DebugID] mergeAlgorithm frameId=69
+[2025-11-16 21:10:13.896] [info] [DebugID] beginFrame frameId=70
+[2025-11-16 21:10:13.898] [info] [DebugID] mergeAlgorithm frameId=70
+[2025-11-16 21:10:15.330] [warning] [Aggregator] mergeDisplay(63): Frame not found. Discarding.
+[2025-11-16 21:10:15.337] [info] [DebugID] mergeDisplay frameId=70
+[2025-11-16 21:10:15.353] [info] [DebugID] mergeDisplay frameId=70
+[2025-11-16 21:10:15.448] [info] [DebugID] beginFrame frameId=71
+[2025-11-16 21:10:15.448] [warning] [Aggregator] beginFrame(71): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:15.450] [info] [DebugID] mergeAlgorithm frameId=71
+[2025-11-16 21:10:15.450] [info] [AlgorithmConcrete] Frame 71: windowFPS=3.5, windowAvg=1.28ms, mode=Invert
+[2025-11-16 21:10:15.528] [info] [DebugID] beginFrame frameId=72
+[2025-11-16 21:10:15.533] [info] [DebugID] mergeAlgorithm frameId=72
+[2025-11-16 21:10:15.604] [info] [DebugID] beginFrame frameId=73
+[2025-11-16 21:10:15.609] [info] [DebugID] mergeAlgorithm frameId=73
+[2025-11-16 21:10:15.684] [info] [DebugID] beginFrame frameId=74
+[2025-11-16 21:10:15.689] [info] [DebugID] mergeAlgorithm frameId=74
+[2025-11-16 21:10:15.760] [info] [DebugID] beginFrame frameId=75
+[2025-11-16 21:10:15.763] [info] [DebugID] mergeAlgorithm frameId=75
+[2025-11-16 21:10:15.836] [info] [DebugID] beginFrame frameId=76
+[2025-11-16 21:10:15.839] [info] [DebugID] mergeAlgorithm frameId=76
+[2025-11-16 21:10:15.916] [info] [DebugID] beginFrame frameId=77
+[2025-11-16 21:10:15.918] [info] [DebugID] mergeAlgorithm frameId=77
+[2025-11-16 21:10:17.353] [warning] [Aggregator] mergeDisplay(70): Frame not found. Discarding.
+[2025-11-16 21:10:17.358] [info] [DebugID] mergeDisplay frameId=77
+[2025-11-16 21:10:17.374] [info] [DebugID] mergeDisplay frameId=77
+[2025-11-16 21:10:17.468] [info] [DebugID] beginFrame frameId=78
+[2025-11-16 21:10:17.468] [warning] [Aggregator] beginFrame(78): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:17.473] [info] [DebugID] mergeAlgorithm frameId=78
+[2025-11-16 21:10:17.473] [info] [AlgorithmConcrete] Frame 78: windowFPS=3.5, windowAvg=1.36ms, mode=Invert
+[2025-11-16 21:10:17.544] [info] [DebugID] beginFrame frameId=79
+[2025-11-16 21:10:17.550] [info] [DebugID] mergeAlgorithm frameId=79
+[2025-11-16 21:10:17.624] [info] [DebugID] beginFrame frameId=80
+[2025-11-16 21:10:17.629] [info] [DebugID] mergeAlgorithm frameId=80
+[2025-11-16 21:10:17.700] [info] [DebugID] beginFrame frameId=81
+[2025-11-16 21:10:17.702] [info] [DebugID] mergeAlgorithm frameId=81
+[2025-11-16 21:10:17.780] [info] [DebugID] beginFrame frameId=82
+[2025-11-16 21:10:17.785] [info] [DebugID] mergeAlgorithm frameId=82
+[2025-11-16 21:10:17.856] [info] [DebugID] beginFrame frameId=83
+[2025-11-16 21:10:17.861] [info] [DebugID] mergeAlgorithm frameId=83
+[2025-11-16 21:10:17.932] [info] [DebugID] beginFrame frameId=84
+[2025-11-16 21:10:17.937] [info] [DebugID] mergeAlgorithm frameId=84
+[2025-11-16 21:10:19.374] [warning] [Aggregator] mergeDisplay(77): Frame not found. Discarding.
+[2025-11-16 21:10:19.379] [info] [DebugID] mergeDisplay frameId=84
+[2025-11-16 21:10:19.395] [info] [DebugID] mergeDisplay frameId=84
+[2025-11-16 21:10:19.484] [info] [DebugID] beginFrame frameId=85
+[2025-11-16 21:10:19.484] [warning] [Aggregator] beginFrame(85): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:19.490] [info] [DebugID] mergeAlgorithm frameId=85
+[2025-11-16 21:10:19.490] [info] [AlgorithmConcrete] Frame 85: windowFPS=3.5, windowAvg=1.51ms, mode=Invert
+[2025-11-16 21:10:19.564] [info] [DebugID] beginFrame frameId=86
+[2025-11-16 21:10:19.568] [info] [DebugID] mergeAlgorithm frameId=86
+[2025-11-16 21:10:19.640] [info] [DebugID] beginFrame frameId=87
+[2025-11-16 21:10:19.642] [info] [DebugID] mergeAlgorithm frameId=87
+[2025-11-16 21:10:19.720] [info] [DebugID] beginFrame frameId=88
+[2025-11-16 21:10:19.725] [info] [DebugID] mergeAlgorithm frameId=88
+[2025-11-16 21:10:19.796] [info] [DebugID] beginFrame frameId=89
+[2025-11-16 21:10:19.798] [info] [DebugID] mergeAlgorithm frameId=89
+[2025-11-16 21:10:19.872] [info] [DebugID] beginFrame frameId=90
+[2025-11-16 21:10:19.876] [info] [DebugID] mergeAlgorithm frameId=90
+[2025-11-16 21:10:19.952] [info] [DebugID] beginFrame frameId=91
+[2025-11-16 21:10:19.954] [info] [DebugID] mergeAlgorithm frameId=91
+[2025-11-16 21:10:21.396] [warning] [Aggregator] mergeDisplay(84): Frame not found. Discarding.
+[2025-11-16 21:10:21.401] [info] [DebugID] mergeDisplay frameId=91
+[2025-11-16 21:10:21.417] [info] [DebugID] mergeDisplay frameId=91
+[2025-11-16 21:10:21.504] [info] [DebugID] beginFrame frameId=92
+[2025-11-16 21:10:21.504] [warning] [Aggregator] beginFrame(92): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:21.507] [info] [DebugID] mergeAlgorithm frameId=92
+[2025-11-16 21:10:21.507] [info] [AlgorithmConcrete] Frame 92: windowFPS=3.5, windowAvg=1.27ms, mode=Invert
+[2025-11-16 21:10:21.580] [info] [DebugID] beginFrame frameId=93
+[2025-11-16 21:10:21.585] [info] [DebugID] mergeAlgorithm frameId=93
+[2025-11-16 21:10:21.660] [info] [DebugID] beginFrame frameId=94
+[2025-11-16 21:10:21.663] [info] [DebugID] mergeAlgorithm frameId=94
+[2025-11-16 21:10:21.736] [info] [DebugID] beginFrame frameId=95
+[2025-11-16 21:10:21.737] [info] [DebugID] mergeAlgorithm frameId=95
+[2025-11-16 21:10:21.816] [info] [DebugID] beginFrame frameId=96
+[2025-11-16 21:10:21.820] [info] [DebugID] mergeAlgorithm frameId=96
+[2025-11-16 21:10:21.892] [info] [DebugID] beginFrame frameId=97
+[2025-11-16 21:10:21.895] [info] [DebugID] mergeAlgorithm frameId=97
+[2025-11-16 21:10:21.968] [info] [DebugID] beginFrame frameId=98
+[2025-11-16 21:10:21.971] [info] [DebugID] mergeAlgorithm frameId=98
+[2025-11-16 21:10:23.417] [warning] [Aggregator] mergeDisplay(91): Frame not found. Discarding.
+[2025-11-16 21:10:23.423] [info] [DebugID] mergeDisplay frameId=98
+[2025-11-16 21:10:23.439] [info] [DebugID] mergeDisplay frameId=98
+[2025-11-16 21:10:23.520] [info] [DebugID] beginFrame frameId=99
+[2025-11-16 21:10:23.520] [warning] [Aggregator] beginFrame(99): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:23.525] [info] [DebugID] mergeAlgorithm frameId=99
+[2025-11-16 21:10:23.525] [info] [AlgorithmConcrete] Frame 99: windowFPS=3.5, windowAvg=1.26ms, mode=Invert
+[2025-11-16 21:10:23.600] [info] [DebugID] beginFrame frameId=100
+[2025-11-16 21:10:23.602] [info] [DebugID] mergeAlgorithm frameId=100
+[2025-11-16 21:10:23.676] [info] [DebugID] beginFrame frameId=101
+[2025-11-16 21:10:23.680] [info] [DebugID] mergeAlgorithm frameId=101
+[2025-11-16 21:10:23.756] [info] [DebugID] beginFrame frameId=102
+[2025-11-16 21:10:23.759] [info] [DebugID] mergeAlgorithm frameId=102
+[2025-11-16 21:10:23.832] [info] [DebugID] beginFrame frameId=103
+[2025-11-16 21:10:23.836] [info] [DebugID] mergeAlgorithm frameId=103
+[2025-11-16 21:10:23.908] [info] [DebugID] beginFrame frameId=104
+[2025-11-16 21:10:23.911] [info] [DebugID] mergeAlgorithm frameId=104
+[2025-11-16 21:10:23.988] [info] [DebugID] beginFrame frameId=105
+[2025-11-16 21:10:23.994] [info] [DebugID] mergeAlgorithm frameId=105
+[2025-11-16 21:10:25.439] [warning] [Aggregator] mergeDisplay(98): Frame not found. Discarding.
+[2025-11-16 21:10:25.445] [info] [DebugID] mergeDisplay frameId=105
+[2025-11-16 21:10:25.461] [info] [DebugID] mergeDisplay frameId=105
+[2025-11-16 21:10:25.540] [info] [DebugID] beginFrame frameId=106
+[2025-11-16 21:10:25.540] [warning] [Aggregator] beginFrame(106): low FPS (0.6447453255963894) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:25.542] [info] [DebugID] mergeAlgorithm frameId=106
+[2025-11-16 21:10:25.542] [info] [AlgorithmConcrete] Frame 106: windowFPS=3.5, windowAvg=1.28ms, mode=Invert
+[2025-11-16 21:10:25.616] [info] [DebugID] beginFrame frameId=107
+[2025-11-16 21:10:25.620] [info] [DebugID] mergeAlgorithm frameId=107
+[2025-11-16 21:10:25.696] [info] [DebugID] beginFrame frameId=108
+[2025-11-16 21:10:25.698] [info] [DebugID] mergeAlgorithm frameId=108
+[2025-11-16 21:10:25.772] [info] [DebugID] beginFrame frameId=109
+[2025-11-16 21:10:25.776] [info] [DebugID] mergeAlgorithm frameId=109
+[2025-11-16 21:10:25.852] [info] [DebugID] beginFrame frameId=110
+[2025-11-16 21:10:25.853] [info] [DebugID] mergeAlgorithm frameId=110
+[2025-11-16 21:10:25.928] [info] [DebugID] beginFrame frameId=111
+[2025-11-16 21:10:25.933] [info] [DebugID] mergeAlgorithm frameId=111
+[2025-11-16 21:10:26.004] [info] [DebugID] beginFrame frameId=112
+[2025-11-16 21:10:26.010] [info] [DebugID] mergeAlgorithm frameId=112
+[2025-11-16 21:10:27.461] [warning] [Aggregator] mergeDisplay(105): Frame not found. Discarding.
+[2025-11-16 21:10:27.467] [info] [DebugID] mergeDisplay frameId=112
+[2025-11-16 21:10:27.483] [info] [DebugID] mergeDisplay frameId=112
+[2025-11-16 21:10:27.556] [info] [DebugID] beginFrame frameId=113
+[2025-11-16 21:10:27.556] [warning] [Aggregator] beginFrame(113): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:27.560] [info] [DebugID] mergeAlgorithm frameId=113
+[2025-11-16 21:10:27.560] [info] [AlgorithmConcrete] Frame 113: windowFPS=3.5, windowAvg=1.27ms, mode=Invert
+[2025-11-16 21:10:27.636] [info] [DebugID] beginFrame frameId=114
+[2025-11-16 21:10:27.638] [info] [DebugID] mergeAlgorithm frameId=114
+[2025-11-16 21:10:27.712] [info] [DebugID] beginFrame frameId=115
+[2025-11-16 21:10:27.716] [info] [DebugID] mergeAlgorithm frameId=115
+[2025-11-16 21:10:27.792] [info] [DebugID] beginFrame frameId=116
+[2025-11-16 21:10:27.796] [info] [DebugID] mergeAlgorithm frameId=116
+[2025-11-16 21:10:27.868] [info] [DebugID] beginFrame frameId=117
+[2025-11-16 21:10:27.874] [info] [DebugID] mergeAlgorithm frameId=117
+[2025-11-16 21:10:27.944] [info] [DebugID] beginFrame frameId=118
+[2025-11-16 21:10:27.948] [info] [DebugID] mergeAlgorithm frameId=118
+[2025-11-16 21:10:28.024] [info] [DebugID] beginFrame frameId=119
+[2025-11-16 21:10:28.028] [info] [DebugID] mergeAlgorithm frameId=119
+[2025-11-16 21:10:29.483] [warning] [Aggregator] mergeDisplay(112): Frame not found. Discarding.
+[2025-11-16 21:10:29.489] [info] [DebugID] mergeDisplay frameId=119
+[2025-11-16 21:10:29.504] [info] [DebugID] mergeDisplay frameId=119
+[2025-11-16 21:10:29.576] [info] [DebugID] beginFrame frameId=120
+[2025-11-16 21:10:29.576] [warning] [Aggregator] beginFrame(120): low FPS (0.6447453255963894) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:29.578] [info] [DebugID] mergeAlgorithm frameId=120
+[2025-11-16 21:10:29.578] [info] [AlgorithmConcrete] Frame 120: windowFPS=3.5, windowAvg=1.28ms, mode=Invert
+[2025-11-16 21:10:29.653] [info] [DebugID] beginFrame frameId=121
+[2025-11-16 21:10:29.656] [info] [DebugID] mergeAlgorithm frameId=121
+[2025-11-16 21:10:29.733] [info] [DebugID] beginFrame frameId=122
+[2025-11-16 21:10:29.734] [info] [DebugID] mergeAlgorithm frameId=122
+[2025-11-16 21:10:29.808] [info] [DebugID] beginFrame frameId=123
+[2025-11-16 21:10:29.813] [info] [DebugID] mergeAlgorithm frameId=123
+[2025-11-16 21:10:29.888] [info] [DebugID] beginFrame frameId=124
+[2025-11-16 21:10:29.891] [info] [DebugID] mergeAlgorithm frameId=124
+[2025-11-16 21:10:29.964] [info] [DebugID] beginFrame frameId=125
+[2025-11-16 21:10:29.966] [info] [DebugID] mergeAlgorithm frameId=125
+[2025-11-16 21:10:30.040] [info] [DebugID] beginFrame frameId=126
+[2025-11-16 21:10:30.044] [info] [DebugID] mergeAlgorithm frameId=126
+[2025-11-16 21:10:31.504] [warning] [Aggregator] mergeDisplay(119): Frame not found. Discarding.
+[2025-11-16 21:10:31.510] [info] [DebugID] mergeDisplay frameId=126
+[2025-11-16 21:10:31.526] [info] [DebugID] mergeDisplay frameId=126
+[2025-11-16 21:10:31.592] [info] [DebugID] beginFrame frameId=127
+[2025-11-16 21:10:31.592] [warning] [Aggregator] beginFrame(127): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:31.594] [info] [DebugID] mergeAlgorithm frameId=127
+[2025-11-16 21:10:31.594] [info] [AlgorithmConcrete] Frame 127: windowFPS=3.5, windowAvg=1.42ms, mode=Invert
+[2025-11-16 21:10:31.672] [info] [DebugID] beginFrame frameId=128
+[2025-11-16 21:10:31.677] [info] [DebugID] mergeAlgorithm frameId=128
+[2025-11-16 21:10:31.748] [info] [DebugID] beginFrame frameId=129
+[2025-11-16 21:10:31.750] [info] [DebugID] mergeAlgorithm frameId=129
+[2025-11-16 21:10:31.828] [info] [DebugID] beginFrame frameId=130
+[2025-11-16 21:10:31.835] [info] [DebugID] mergeAlgorithm frameId=130
+[2025-11-16 21:10:31.904] [info] [DebugID] beginFrame frameId=131
+[2025-11-16 21:10:31.906] [info] [DebugID] mergeAlgorithm frameId=131
+[2025-11-16 21:10:31.980] [info] [DebugID] beginFrame frameId=132
+[2025-11-16 21:10:31.983] [info] [DebugID] mergeAlgorithm frameId=132
+[2025-11-16 21:10:32.060] [info] [DebugID] beginFrame frameId=133
+[2025-11-16 21:10:32.062] [info] [DebugID] mergeAlgorithm frameId=133
+[2025-11-16 21:10:33.526] [warning] [Aggregator] mergeDisplay(126): Frame not found. Discarding.
+[2025-11-16 21:10:33.531] [info] [DebugID] mergeDisplay frameId=133
+[2025-11-16 21:10:33.547] [info] [DebugID] mergeDisplay frameId=133
+[2025-11-16 21:10:33.612] [info] [DebugID] beginFrame frameId=134
+[2025-11-16 21:10:33.612] [warning] [Aggregator] beginFrame(134): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:33.617] [info] [DebugID] mergeAlgorithm frameId=134
+[2025-11-16 21:10:33.617] [info] [AlgorithmConcrete] Frame 134: windowFPS=3.5, windowAvg=1.35ms, mode=Invert
+[2025-11-16 21:10:33.688] [info] [DebugID] beginFrame frameId=135
+[2025-11-16 21:10:33.691] [info] [DebugID] mergeAlgorithm frameId=135
+[2025-11-16 21:10:33.768] [info] [DebugID] beginFrame frameId=136
+[2025-11-16 21:10:33.772] [info] [DebugID] mergeAlgorithm frameId=136
+[2025-11-16 21:10:33.844] [info] [DebugID] beginFrame frameId=137
+[2025-11-16 21:10:33.850] [info] [DebugID] mergeAlgorithm frameId=137
+[2025-11-16 21:10:33.924] [info] [DebugID] beginFrame frameId=138
+[2025-11-16 21:10:33.929] [info] [DebugID] mergeAlgorithm frameId=138
+[2025-11-16 21:10:34.000] [info] [DebugID] beginFrame frameId=139
+[2025-11-16 21:10:34.004] [info] [DebugID] mergeAlgorithm frameId=139
+[2025-11-16 21:10:34.076] [info] [DebugID] beginFrame frameId=140
+[2025-11-16 21:10:34.082] [info] [DebugID] mergeAlgorithm frameId=140
+[2025-11-16 21:10:35.547] [warning] [Aggregator] mergeDisplay(133): Frame not found. Discarding.
+[2025-11-16 21:10:35.552] [info] [DebugID] mergeDisplay frameId=140
+[2025-11-16 21:10:35.569] [info] [DebugID] mergeDisplay frameId=140
+[2025-11-16 21:10:35.628] [info] [DebugID] beginFrame frameId=141
+[2025-11-16 21:10:35.628] [warning] [Aggregator] beginFrame(141): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:35.632] [info] [DebugID] mergeAlgorithm frameId=141
+[2025-11-16 21:10:35.632] [info] [AlgorithmConcrete] Frame 141: windowFPS=3.5, windowAvg=1.27ms, mode=Invert
+[2025-11-16 21:10:35.708] [info] [DebugID] beginFrame frameId=142
+[2025-11-16 21:10:35.712] [info] [DebugID] mergeAlgorithm frameId=142
+[2025-11-16 21:10:35.784] [info] [DebugID] beginFrame frameId=143
+[2025-11-16 21:10:35.790] [info] [DebugID] mergeAlgorithm frameId=143
+[2025-11-16 21:10:35.864] [info] [DebugID] beginFrame frameId=144
+[2025-11-16 21:10:35.869] [info] [DebugID] mergeAlgorithm frameId=144
+[2025-11-16 21:10:35.940] [info] [DebugID] beginFrame frameId=145
+[2025-11-16 21:10:35.947] [info] [DebugID] mergeAlgorithm frameId=145
+[2025-11-16 21:10:36.016] [info] [DebugID] beginFrame frameId=146
+[2025-11-16 21:10:36.020] [info] [DebugID] mergeAlgorithm frameId=146
+[2025-11-16 21:10:36.096] [info] [DebugID] beginFrame frameId=147
+[2025-11-16 21:10:36.103] [info] [DebugID] mergeAlgorithm frameId=147
+[2025-11-16 21:10:37.569] [warning] [Aggregator] mergeDisplay(140): Frame not found. Discarding.
+[2025-11-16 21:10:37.574] [info] [DebugID] mergeDisplay frameId=147
+[2025-11-16 21:10:37.590] [info] [DebugID] mergeDisplay frameId=147
+[2025-11-16 21:10:37.648] [info] [DebugID] beginFrame frameId=148
+[2025-11-16 21:10:37.649] [warning] [Aggregator] beginFrame(148): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:37.653] [info] [DebugID] mergeAlgorithm frameId=148
+[2025-11-16 21:10:37.653] [info] [AlgorithmConcrete] Frame 148: windowFPS=3.5, windowAvg=1.33ms, mode=Invert
+[2025-11-16 21:10:37.724] [info] [DebugID] beginFrame frameId=149
+[2025-11-16 21:10:37.727] [info] [DebugID] mergeAlgorithm frameId=149
+[2025-11-16 21:10:37.804] [info] [DebugID] beginFrame frameId=150
+[2025-11-16 21:10:37.810] [info] [DebugID] mergeAlgorithm frameId=150
+[2025-11-16 21:10:37.880] [info] [DebugID] beginFrame frameId=151
+[2025-11-16 21:10:37.884] [info] [DebugID] mergeAlgorithm frameId=151
+[2025-11-16 21:10:37.957] [info] [DebugID] beginFrame frameId=152
+[2025-11-16 21:10:37.959] [info] [DebugID] mergeAlgorithm frameId=152
+[2025-11-16 21:10:38.037] [info] [DebugID] beginFrame frameId=153
+[2025-11-16 21:10:38.042] [info] [DebugID] mergeAlgorithm frameId=153
+[2025-11-16 21:10:38.112] [info] [DebugID] beginFrame frameId=154
+[2025-11-16 21:10:38.118] [info] [DebugID] mergeAlgorithm frameId=154
+[2025-11-16 21:10:39.590] [warning] [Aggregator] mergeDisplay(147): Frame not found. Discarding.
+[2025-11-16 21:10:39.596] [info] [DebugID] mergeDisplay frameId=154
+[2025-11-16 21:10:39.611] [info] [DebugID] mergeDisplay frameId=154
+[2025-11-16 21:10:39.665] [info] [DebugID] beginFrame frameId=155
+[2025-11-16 21:10:39.665] [warning] [Aggregator] beginFrame(155): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:39.666] [info] [DebugID] mergeAlgorithm frameId=155
+[2025-11-16 21:10:39.666] [info] [AlgorithmConcrete] Frame 155: windowFPS=3.5, windowAvg=1.30ms, mode=Invert
+[2025-11-16 21:10:39.744] [info] [DebugID] beginFrame frameId=156
+[2025-11-16 21:10:39.750] [info] [DebugID] mergeAlgorithm frameId=156
+[2025-11-16 21:10:39.821] [info] [DebugID] beginFrame frameId=157
+[2025-11-16 21:10:39.823] [info] [DebugID] mergeAlgorithm frameId=157
+[2025-11-16 21:10:39.900] [info] [DebugID] beginFrame frameId=158
+[2025-11-16 21:10:39.907] [info] [DebugID] mergeAlgorithm frameId=158
+[2025-11-16 21:10:39.977] [info] [DebugID] beginFrame frameId=159
+[2025-11-16 21:10:39.982] [info] [DebugID] mergeAlgorithm frameId=159
+[2025-11-16 21:10:40.053] [info] [DebugID] beginFrame frameId=160
+[2025-11-16 21:10:40.057] [info] [DebugID] mergeAlgorithm frameId=160
+[2025-11-16 21:10:40.133] [info] [DebugID] beginFrame frameId=161
+[2025-11-16 21:10:40.134] [info] [DebugID] mergeAlgorithm frameId=161
+[2025-11-16 21:10:41.612] [warning] [Aggregator] mergeDisplay(154): Frame not found. Discarding.
+[2025-11-16 21:10:41.619] [info] [DebugID] mergeDisplay frameId=161
+[2025-11-16 21:10:41.634] [info] [DebugID] mergeDisplay frameId=161
+[2025-11-16 21:10:41.761] [info] [DebugID] beginFrame frameId=162
+[2025-11-16 21:10:41.761] [warning] [Aggregator] beginFrame(162): low FPS (0.6127450980392157) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:41.766] [info] [DebugID] mergeAlgorithm frameId=162
+[2025-11-16 21:10:41.766] [info] [AlgorithmConcrete] Frame 162: windowFPS=3.3, windowAvg=1.43ms, mode=Invert
+[2025-11-16 21:10:41.841] [info] [DebugID] beginFrame frameId=163
+[2025-11-16 21:10:41.844] [info] [DebugID] mergeAlgorithm frameId=163
+[2025-11-16 21:10:41.917] [info] [DebugID] beginFrame frameId=164
+[2025-11-16 21:10:41.922] [info] [DebugID] mergeAlgorithm frameId=164
+[2025-11-16 21:10:41.993] [info] [DebugID] beginFrame frameId=165
+[2025-11-16 21:10:41.996] [info] [DebugID] mergeAlgorithm frameId=165
+[2025-11-16 21:10:42.073] [info] [DebugID] beginFrame frameId=166
+[2025-11-16 21:10:42.075] [info] [DebugID] mergeAlgorithm frameId=166
+[2025-11-16 21:10:42.149] [info] [DebugID] beginFrame frameId=167
+[2025-11-16 21:10:42.154] [info] [DebugID] mergeAlgorithm frameId=167
+[2025-11-16 21:10:42.229] [info] [DebugID] beginFrame frameId=168
+[2025-11-16 21:10:42.232] [info] [DebugID] mergeAlgorithm frameId=168
+[2025-11-16 21:10:43.635] [warning] [Aggregator] mergeDisplay(161): Frame not found. Discarding.
+[2025-11-16 21:10:43.641] [info] [DebugID] mergeDisplay frameId=168
+[2025-11-16 21:10:43.657] [info] [DebugID] mergeDisplay frameId=168
+[2025-11-16 21:10:43.781] [info] [DebugID] beginFrame frameId=169
+[2025-11-16 21:10:43.781] [warning] [Aggregator] beginFrame(169): low FPS (0.6443298969072165) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:43.783] [info] [DebugID] mergeAlgorithm frameId=169
+[2025-11-16 21:10:43.783] [info] [AlgorithmConcrete] Frame 169: windowFPS=3.5, windowAvg=1.28ms, mode=Invert
+[2025-11-16 21:10:43.857] [info] [DebugID] beginFrame frameId=170
+[2025-11-16 21:10:43.858] [info] [DebugID] mergeAlgorithm frameId=170
+[2025-11-16 21:10:43.937] [info] [DebugID] beginFrame frameId=171
+[2025-11-16 21:10:43.941] [info] [DebugID] mergeAlgorithm frameId=171
+[2025-11-16 21:10:44.013] [info] [DebugID] beginFrame frameId=172
+[2025-11-16 21:10:44.014] [info] [DebugID] mergeAlgorithm frameId=172
+[2025-11-16 21:10:44.089] [info] [DebugID] beginFrame frameId=173
+[2025-11-16 21:10:44.093] [info] [DebugID] mergeAlgorithm frameId=173
+[2025-11-16 21:10:44.169] [info] [DebugID] beginFrame frameId=174
+[2025-11-16 21:10:44.171] [info] [DebugID] mergeAlgorithm frameId=174
+[2025-11-16 21:10:44.245] [info] [DebugID] beginFrame frameId=175
+[2025-11-16 21:10:44.249] [info] [DebugID] mergeAlgorithm frameId=175
+[2025-11-16 21:10:45.657] [warning] [Aggregator] mergeDisplay(168): Frame not found. Discarding.
+[2025-11-16 21:10:45.662] [info] [DebugID] mergeDisplay frameId=175
+[2025-11-16 21:10:45.679] [info] [DebugID] mergeDisplay frameId=175
+[2025-11-16 21:10:45.797] [info] [DebugID] beginFrame frameId=176
+[2025-11-16 21:10:45.797] [warning] [Aggregator] beginFrame(176): low FPS (0.6426735218508998) or missing dims; accepting partial frame for CSV
+[2025-11-16 21:10:45.802] [info] [DebugID] mergeAlgorithm frameId=176
+[2025-11-16 21:10:45.803] [info] [AlgorithmConcrete] Frame 176: windowFPS=3.5, windowAvg=1.30ms, mode=Invert
+[2025-11-16 21:10:45.877] [info] [DebugID] beginFrame frameId=177
+[2025-11-16 21:10:45.881] [info] [DebugID] mergeAlgorithm frameId=177
+[2025-11-16 21:10:45.953] [info] [DebugID] beginFrame frameId=178
+[2025-11-16 21:10:45.954] [info] [DebugID] mergeAlgorithm frameId=178
+[2025-11-16 21:10:46.029] [info] [DebugID] beginFrame frameId=179
+[2025-11-16 21:10:46.033] [info] [DebugID] mergeAlgorithm frameId=179
+[2025-11-16 21:10:46.109] [info] [DebugID] beginFrame frameId=180
+[2025-11-16 21:10:46.111] [info] [DebugID] mergeAlgorithm frameId=180
+[2025-11-16 21:10:46.185] [info] [DebugID] beginFrame frameId=181
+[2025-11-16 21:10:46.189] [info] [DebugID] mergeAlgorithm frameId=181
+[2025-11-16 21:10:46.265] [info] [DebugID] beginFrame frameId=182
+[2025-11-16 21:10:46.267] [info] [DebugID] mergeAlgorithm frameId=182
+[2025-11-16 21:10:47.679] [warning] [Aggregator] mergeDisplay(175): Frame not found. Discarding.
+[2025-11-16 21:10:47.684] [info] [DebugID] mergeDisplay frameId=182
+[2025-11-16 21:10:47.700] [info] [DebugID] mergeDisplay frameId=182

@@ -339,7 +339,7 @@ inline DataConcrete::DataConcrete(const CameraConfig& config,
     lastFpsTime_ = std::chrono::steady_clock::now();
     lastFps_ = cameraConfig_.fps; // initial value
 }
-/ ---------------------------------------------------------------
+// ---------------------------------------------------------------
 // 4. Destructor – clean up
 inline DataConcrete::~DataConcrete() {
     if (running_) stopCapture();
@@ -396,314 +396,6 @@ inline bool DataConcrete::forceReleaseDevice() {
 }
 
 
-// ---------------------------------------------------------------
-// 5. configure() – ENFORCED 30 FPS + ANTI-STARVING BUFFERS
-// ---------------------------------------------------------------
-// inline bool DataConcrete::configure(const CameraConfig& config) {
-//     try {
-//         std::lock_guard<std::mutex> lock(mutex_);
-      
-//         spdlog::debug("[DataConcrete] configure() called: {}x{} @ {}fps, {} buffers",
-//                       config.width, config.height, config.fps, config.numBuffers);
-
-//         if (fd_ < 0) {
-//             reportError("Device not opened; cannot configure.");
-//             return false;
-//         }
-
-//         if (configured_ || !buffers_.empty()) {
-//             spdlog::info("[DataConcrete] Re-configuring device. Unmapping old buffers.");
-//             unmapBuffers();
-//         }
-
-//         if (!config.validate()) {
-//             reportError(fmt::format("Invalid CameraConfig: width={}, height={}, fps={}, numBuffers={}",
-//                                     config.width, config.height, config.fps, config.numBuffers));
-//             return false;
-//         }
-//         cameraConfig_ = config;
-		
-// 		// ---- FORCE 30 FPS MIN ----
-// 		if (cameraConfig_.fps < 30) {
-// 			spdlog::warn("[DataConcrete] FPS <30 → clamping to 30");
-// 			cameraConfig_.fps = 30;
-// 		}
-
-//         // Reset any old stream/buffers before S_FMT
-//         v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         ioctl(fd_, VIDIOC_STREAMOFF, &type);
-//         v4l2_requestbuffers req_clear{};
-//         req_clear.count  = 0;
-//         req_clear.type   = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         req_clear.memory = V4L2_MEMORY_MMAP;
-//         ioctl(fd_, VIDIOC_REQBUFS, &req_clear);
-
-//         // Set format
-//         struct v4l2_format fmt = {};
-//         fmt.type                = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         fmt.fmt.pix.width       = config.width;
-//         fmt.fmt.pix.height      = config.height;
-//         fmt.fmt.pix.pixelformat = static_cast<uint32_t>(config.pixelFormat);
-//         fmt.fmt.pix.field       = V4L2_FIELD_NONE;
-
-//         if (ioctl(fd_, VIDIOC_S_FMT, &fmt) < 0) {
-//             reportError(fmt::format("VIDIOC_S_FMT failed: {}", std::strerror(errno)));
-//             return false;
-//         }
-
-//         // Validate format
-//         struct v4l2_format currentFmt = {};
-//         currentFmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         if (ioctl(fd_, VIDIOC_G_FMT, &currentFmt) < 0) {
-//             reportError(fmt::format("VIDIOC_G_FMT failed after S_FMT: {}", std::strerror(errno)));
-//             return false;
-//         }
-//         if (currentFmt.fmt.pix.pixelformat != static_cast<uint32_t>(config.pixelFormat)) {
-//             reportError(fmt::format("Format mismatch: expected {}, got 0x{:X}",
-//                                     static_cast<uint32_t>(config.pixelFormat), currentFmt.fmt.pix.pixelformat));
-//             return false;
-//         }
-
-//         // Set frame rate
-// 		// ---- SET FPS (V4L2) ----
-//         struct v4l2_streamparm parm = {};
-//         parm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         parm.parm.capture.timeperframe.numerator = 1;
-//         parm.parm.capture.timeperframe.denominator = config.fps;
-//         if (ioctl(fd_, VIDIOC_S_PARM, &parm) < 0) {
-//             spdlog::warn("[DataConcrete] VIDIOC_S_PARM failed to set {} FPS: {}. Continuing with driver default FPS.",
-//                          config.fps, std::strerror(errno));
-//         } else {
-//             spdlog::info("[DataConcrete] Frame rate set to {} FPS.", config.fps);
-//         }
-
-//         // Verify frame rate
-//         struct v4l2_streamparm gparm = {};
-//         gparm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         if (ioctl(fd_, VIDIOC_G_PARM, &gparm) < 0) {
-//             spdlog::warn("[DataConcrete] VIDIOC_G_PARM failed: {}. Assuming {} FPS.", std::strerror(errno), config.fps);
-//         } else {
-//             uint32_t denom = gparm.parm.capture.timeperframe.denominator;
-//             uint32_t num = gparm.parm.capture.timeperframe.numerator;
-//             if (denom > 0 && num > 0) {
-//                 double actual_fps = static_cast<double>(denom) / num;
-//                 if (std::abs(actual_fps - config.fps) > 0.1) {
-//                     spdlog::warn("[DataConcrete] Requested {} FPS, but driver set {:.2f} FPS.", config.fps, actual_fps);
-//                 } else {
-//                     spdlog::info("[DataConcrete] Verified frame rate: {:.2f} FPS.", actual_fps);
-//                 }
-//             } else {
-//                 spdlog::warn("[DataConcrete] Invalid FPS returned by VIDIOC_G_PARM, assuming {} FPS.", config.fps);
-//             }
-//         }
-
-//         // Request buffers
-// 		// ---- REQUEST 8 BUFFERS (anti-starving) ----
-//         struct v4l2_requestbuffers req = {};
-//         req.count  = config.numBuffers;
-//         req.type   = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         req.memory = V4L2_MEMORY_MMAP;
-//         if (ioctl(fd_, VIDIOC_REQBUFS, &req) < 0) {
-//             reportError(fmt::format("VIDIOC_REQBUFS failed for {} buffers: {}", config.numBuffers, std::strerror(errno)));
-//             return false;
-//         }
-
-//         if (!initializeBuffers()) {
-//             spdlog::error("[DataConcrete] Buffer initialization failed.");
-//             return false;
-//         }
-
-//         configured_ = true;
-//         spdlog::info("[DataConcrete] Device configured ({}x{}, {} buffers).", config.width, config.height, config.numBuffers);
-//         return true;
-//     } catch (const std::exception& e) {
-//         reportError(fmt::format("Exception in configure: {}", e.what()));
-//         return false;
-//     }
-// }
-
-// ---------------------------------------------------------------
-// 5. configure() – ENFORCED 30 FPS + ANTI-STARVING BUFFERS
-// ---------------------------------------------------------------
-// inline bool DataConcrete::configure(const CameraConfig& config)
-// {
-//     try {
-//         std::lock_guard<std::mutex> lock(mutex_);
-//         spdlog::debug("[DataConcrete] configure() called: {}x{} @ {}fps, {} buffers",
-//                       config.width, config.height, config.fps, config.numBuffers);
-
-//         if (fd_ < 0) {
-//             reportError("Device not opened");
-//             return false;
-//         }
-
-//         // ------------------------------------------------------------------
-//         // 1. FULL CLEANUP: stop streaming + free all old buffers
-//         // ------------------------------------------------------------------
-//         if (streaming_) {
-//             spdlog::info("[DataConcrete] Stopping old stream before re-config");
-//             internalStopStreaming();   // VIDIOC_STREAMOFF
-//         }
-//         if (!buffers_.empty()) {
-//             spdlog::info("[DataConcrete] Releasing {} old buffers", buffers_.size());
-//             unmapBuffers();
-//         }
-
-//         // Force driver to release any internal buffers
-//         {
-//             v4l2_requestbuffers req_clear{};
-//             req_clear.count  = 0;
-//             req_clear.type   = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//             req_clear.memory = V4L2_MEMORY_MMAP;
-//             if (ioctl(fd_, VIDIOC_REQBUFS, &req_clear) < 0 && errno != EINVAL) {
-//                 reportError(fmt::format("VIDIOC_REQBUFS(0) cleanup failed: {}", std::strerror(errno)));
-//                 return false;
-//             }
-//         }
-
-//         // ------------------------------------------------------------------
-//         // 2. VALIDATE + ENFORCE 30 FPS
-//         // ------------------------------------------------------------------
-//         if (!config.validate()) {
-//             reportError("Invalid CameraConfig");
-//             return false;
-//         }
-
-//         CameraConfig cfg = config;
-//         if (cfg.fps < 30) {
-//             spdlog::warn("[DataConcrete] Requested {} FPS < 30 → clamping to 30", cfg.fps);
-//             cfg.fps = 30;
-//         }
-
-//         // ------------------------------------------------------------------
-//         // 3. SET PIXEL FORMAT (YUYV 320x240 – HARD-CODED FOR STABILITY)
-//         // ------------------------------------------------------------------
-//         v4l2_format fmt{};
-//         fmt.type                = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         fmt.fmt.pix.width       = cfg.width;
-//         fmt.fmt.pix.height      = cfg.height;
-//         fmt.fmt.pix.pixelformat = V4L2_PIX_FMT_YUYV;
-//         fmt.fmt.pix.field       = V4L2_FIELD_NONE;
-
-//         if (ioctl(fd_, VIDIOC_S_FMT, &fmt) < 0) {
-//             reportError(fmt::format("VIDIOC_S_FMT failed: {}", std::strerror(errno)));
-//             return false;
-//         }
-
-//         // Verify format was accepted
-//         v4l2_format check{};
-//         check.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         if (ioctl(fd_, VIDIOC_G_FMT, &check) < 0) {
-//             reportError("VIDIOC_G_FMT failed");
-//             return false;
-//         }
-//         if (check.fmt.pix.pixelformat != V4L2_PIX_FMT_YUYV ||
-//             check.fmt.pix.width != cfg.width ||
-//             check.fmt.pix.height != cfg.height) {
-//             reportError(fmt::format("Format mismatch: got {}x{} {:#x}",
-//                                     check.fmt.pix.width, check.fmt.pix.height,
-//                                     check.fmt.pix.pixelformat));
-//             return false;
-//         }
-//         spdlog::info("[DataConcrete] Format locked: {}x{} YUYV", cfg.width, cfg.height);
-
-//         // ------------------------------------------------------------------
-//         // 4. SET 30 FPS VIA S_PARM + VERIFY
-//         // ------------------------------------------------------------------
-//         v4l2_streamparm parm{};
-//         parm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         parm.parm.capture.timeperframe.numerator   = 1;
-//         parm.parm.capture.timeperframe.denominator = cfg.fps;
-
-//         if (ioctl(fd_, VIDIOC_S_PARM, &parm) < 0) {
-//             spdlog::warn("[DataConcrete] VIDIOC_S_PARM failed: {}", std::strerror(errno));
-//         }
-
-//         // Verify actual FPS
-//         v4l2_streamparm gparm{};
-//         gparm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         if (ioctl(fd_, VIDIOC_G_PARM, &gparm) == 0) {
-//             double actual = static_cast<double>(gparm.parm.capture.timeperframe.denominator) /
-//                             gparm.parm.capture.timeperframe.numerator;
-//             if (std::abs(actual - cfg.fps) > 1.0) {
-//                 spdlog::warn("[DataConcrete] Driver reports {:.1f} FPS (requested {})", actual, cfg.fps);
-//             } else {
-//                 spdlog::info("[DataConcrete] FPS verified: {:.1f}", actual);
-//             }
-//         }
-
-//         // ------------------------------------------------------------------
-//         // 5. REQUEST 8 BUFFERS (ANTI-STARVING)
-//         // ------------------------------------------------------------------
-//         const uint32_t NUM_BUFFERS = 8;
-//         v4l2_requestbuffers req{};
-//         req.count  = NUM_BUFFERS;
-//         req.type   = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         req.memory = V4L2_MEMORY_MMAP;
-
-//         if (ioctl(fd_, VIDIOC_REQBUFS, &req) < 0) {
-//             reportError(fmt::format("VIDIOC_REQBUFS({}) failed: {}", NUM_BUFFERS, std::strerror(errno)));
-//             return false;
-//         }
-//         if (req.count < 2) {
-//             reportError("Driver gave <2 buffers");
-//             return false;
-//         }
-
-//         // ------------------------------------------------------------------
-//         // 6. MAP + QUEUE ALL BUFFERS
-//         // ------------------------------------------------------------------
-//         buffers_.resize(req.count);
-//         for (uint32_t i = 0; i < req.count; ++i) {
-//             v4l2_buffer buf{};
-//             buf.type   = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//             buf.memory = V4L2_MEMORY_MMAP;
-//             buf.index  = i;
-
-//             if (ioctl(fd_, VIDIOC_QUERYBUF, &buf) < 0) {
-//                 reportError("VIDIOC_QUERYBUF failed");
-//                 return false;
-//             }
-
-//             buffers_[i].length = buf.length;
-//             buffers_[i].start  = static_cast<uint8_t*>(
-//                 mmap(nullptr, buf.length, PROT_READ | PROT_WRITE, MAP_SHARED, fd_, buf.m.offset)
-//             );
-//             if (buffers_[i].start == MAP_FAILED) {
-//                 reportError("mmap failed");
-//                 return false;
-//             }
-//             buffers_[i].state = AVAILABLE;
-
-//             // QUEUE IMMEDIATELY
-//             if (!queueBufferInternal(i)) {
-//                 reportError(fmt::format("Failed to queue buffer {}", i));
-//                 return false;
-//             }
-//             buffers_[i].state = QUEUED;
-//         }
-
-//         // ------------------------------------------------------------------
-//         // 7. START STREAMING
-//         // ------------------------------------------------------------------
-//         v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         if (ioctl(fd_, VIDIOC_STREAMON, &type) < 0) {
-//             reportError(fmt::format("VIDIOC_STREAMON failed: {}", std::strerror(errno)));
-//             return false;
-//         }
-
-//         streaming_   = true;
-//         configured_  = true;
-//         cameraConfig_ = cfg;
-
-//         spdlog::info("[DataConcrete] CONFIGURED: 320x240 YUYV @ 30 FPS, {} buffers → READY", req.count);
-//         return true;
-
-//     } catch (const std::exception& e) {
-//         reportError(fmt::format("configure() exception: {}", e.what()));
-//         return false;
-//     }
-// }
 
 //==============================================================================================================
 // 2. configure() – QUEUE BUFFERS ONLY (NO STREAMON)
@@ -863,29 +555,6 @@ inline bool DataConcrete::stopStreaming() {
     return true;
 }
 
-// inline bool DataConcrete::startCapture() {
-//     // [MOD 09-20-2025] Independence: Starts async capture thread via ThreadManager
-//     std::lock_guard<std::mutex> lock(mutex_);
-//     if (running_) return true;
-//     if (!configured_) {
-//         reportError("Device not configured; cannot start capture.");
-//         return false;
-//     }
-//     if (!startStreaming()) return false;
-
-//     running_ = true;
-//     try {
-//         std::thread t(&DataConcrete::captureThreadFunc, this);
-//         tm_->addThread("CameraCaptureZeroCopy", std::move(t));
-//         spdlog::info("[DataConcrete] Camera capture thread started with {} buffers.", cameraConfig_.numBuffers);
-//     } catch (const std::exception& e) {
-//         running_ = false;
-//         streaming_ = false;
-//         reportError(fmt::format("Failed to create capture thread: {}", e.what()));
-//         return false;
-//     }
-//     return true;
-// }
 
 
 inline bool DataConcrete::startCapture() {
@@ -933,7 +602,8 @@ inline bool DataConcrete::stopCapture() {
         uint64_t one = 1;
         ::write(wakeupFd_, &one, sizeof(one));
     }
-    if (metricAggregator_) metricAggregator_->forceFlushBatch();
+    // REMOVE THIS LINE:
+     if (metricAggregator_) metricAggregator_->forceFlushBatch();;
 
     tm_->joinThreadsFor(Component::Camera);
     
@@ -945,93 +615,6 @@ inline bool DataConcrete::stopCapture() {
     return true;
 }
 
-
-// inline void DataConcrete::captureThreadFunc() {
-//     // [MOD 09-20-2025] Independence: Async thread loop produces frames and metrics
-//     spdlog::info("[DataConcrete] Capture thread started.");
-//     try {
-//         while (running_) {
-//             if (capturePaused_) {
-//                 std::this_thread::sleep_for(std::chrono::milliseconds(100));
-//                 continue;
-//             }
-//             if (!dequeFrame()) {
-//                 if (errno == EAGAIN) {
-//                     std::this_thread::yield();
-//                     continue;
-//                 }
-//                 reportError("Failed to dequeue frame");
-//                 break;
-//             }
-//         }
-//     } catch (const std::exception& e) {
-//         spdlog::error("[DataConcrete] Exception in capture thread: {}", e.what());
-//     }
-//     spdlog::info("[DataConcrete] Capture thread exiting.");
-// }
-
-// inline void DataConcrete::captureThreadFunc() {
-//     spdlog::info("[DataConcrete] Capture thread started.");
-//     try {
-//         while (running_) {
-//             if (capturePaused_) {
-//                 std::this_thread::sleep_for(std::chrono::milliseconds(100));
-//                 continue;
-//             }
-
-//             fd_set fds;
-//             FD_ZERO(&fds);
-//             FD_SET(fd_, &fds);
-//             struct timeval tv = {2, 0}; // 2-second timeout
-
-//             // 1. Sleep efficiently until a frame is ready or a timeout occurs.
-//             int r = select(fd_ + 1, &fds, nullptr, nullptr, &tv);
-
-//             if (r < 0) { // Error
-//                 reportError("select() failed in capture thread");
-//                 break;
-//             }
-//             if (r == 0) { // Timeout
-//                 spdlog::warn("[DataConcrete] select() timeout in capture thread, no frame received in 2s.");
-//                 continue;
-//             }
-            
-//             // 2. A frame is ready. Now we can call dequeFrame() to process it.
-//             if (!dequeFrame()) {
-//                 if (errno != EAGAIN) {
-//                     reportError("dequeFrame returned a fatal error.");
-//                     break;
-//                 }
-//             }
-//         }
-//     } catch (const std::exception& e) {
-//         spdlog::error("[DataConcrete] Exception in capture thread: {}", e.what());
-//     }
-//     spdlog::info("[DataConcrete] Capture thread exiting.");
-// }
-
-
-// inline void DataConcrete::captureThreadFunc() {
-//     spdlog::info("[DataConcrete] Capture thread started.");
-//     while (running_) {
-//         fd_set fds;
-//         FD_ZERO(&fds);
-//         FD_SET(fd_, &fds);
-//         struct timeval tv = {2, 0}; // 2-second timeout
-//         int r = select(fd_ + 1, &fds, nullptr, nullptr, &tv);
-//         if (r > 0) {
-//             internalDequeFrame();
-//         } else if (r == 0) {
-//             spdlog::warn("[DataConcrete] select() timeout in capture thread, no frame received in 2s.");
-//         } else {
-//             if (errno != EINTR) {
-//                 reportError("select() failed in capture thread");
-//                 running_ = false; // Stop thread on critical error
-//             }
-//         }
-//     }
-//     spdlog::info("[DataConcrete] Capture thread exiting.");
-// }
 
 
 // ==================================================================================================================
@@ -1116,10 +699,6 @@ inline bool DataConcrete::dequeFrame() {
         return false;
     }
 
-    // [MOD 09-20-2025] Zero-Copy: Use shared_ptr for MMAP buffer with custom deleter
-    // auto bufferGuard = std::shared_ptr<void>(currentBuffer.start, [this, bufferIndex](void*) {
-    //     queueBufferInternal(bufferIndex); // Auto-requeue when refcount hits 0
-    // });
 
      // [MOD 09-22-2025] CRITICAL FIX: The custom deleter now calls the public, thread-safe queueBuffer method.
     // This prevents the race condition that was causing buffer starvation.
@@ -1206,12 +785,12 @@ inline bool DataConcrete::dequeFrame() {
     }
 
     // [MOD 09-20-2025] Backpressure checks for queues
-    if (displayOrigQueue_ && displayOrigQueue_->size() < cameraConfig_.numBuffers * 2) {
+    if (displayOrigQueue_ && displayOrigQueue_->size() < static_cast<size_t>(cameraConfig_.numBuffers) * 2) {
         displayOrigQueue_->push(frame);
     } else {
         spdlog::warn("[DataConcrete] Display queue full, dropping frame {}.", frameId);
     }
-    if (algoQueue_ && algoQueue_->size() < cameraConfig_.numBuffers * 2) {
+    if (algoQueue_ && algoQueue_->size() < static_cast<size_t>(cameraConfig_.numBuffers) * 2) {
         algoQueue_->push(frame);
     } else {
         spdlog::warn("[DataConcrete] Algo queue full, dropping frame {}.", frameId);
@@ -1221,216 +800,6 @@ inline bool DataConcrete::dequeFrame() {
 }
 //====================================================================================================================
 
-// inline bool DataConcrete::internalDequeFrame() {
-//     std::lock_guard<std::mutex> lock(mutex_);
-    
-//     struct v4l2_buffer buf{};
-//     buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//     buf.memory = V4L2_MEMORY_MMAP;
-//     if (ioctl(fd_, VIDIOC_DQBUF, &buf) < 0) {
-//         if (errno != EAGAIN) reportError(fmt::format("VIDIOC_DQBUF failed: {}", std::strerror(errno)));
-//         return false;
-//     }
-
-//     const size_t bufferIndex = buf.index;
-//     Buffer& currentBuffer = buffers_[bufferIndex];
-    
-//     currentBuffer.state = IN_USE;
-
-//     if (buf.bytesused == 0) {
-//         spdlog::warn("[DataConcrete] Dequeued empty frame (idx={}), re-queuing immediately.", bufferIndex);
-//         queueBufferInternal(bufferIndex); // Requeue and continue
-//         return true;
-//     }
-    
-//     auto bufferGuard = std::shared_ptr<void>(currentBuffer.start, [this, bufferIndex](void*) {
-//         this->queueBuffer(bufferIndex);
-//     });
-
-//     // [MOD 09-22-2025] Completed the implementation of this method with the logic from the previous, working version.
-//     // This includes timestamp normalization, frame creation, metrics calculation, and pushing to queues.
-    
-//     // --- Timestamp Normalization ---
-//     std::chrono::steady_clock::time_point capMono;
-//     std::chrono::system_clock::time_point capSys;
-//     const bool haveDriverTs = (buf.timestamp.tv_sec != 0 || buf.timestamp.tv_usec != 0);
-//     const bool haveBases = basesInitialized_.load(std::memory_order_acquire);
-
-//     if (usesMonotonicTs_ && haveDriverTs && haveBases) {
-//         auto mono_ns = std::chrono::seconds(buf.timestamp.tv_sec) + std::chrono::microseconds(buf.timestamp.tv_usec);
-//         capMono = std::chrono::steady_clock::time_point(std::chrono::duration_cast<std::chrono::steady_clock::duration>(mono_ns));
-//         capSys = std::chrono::system_clock::time_point(capMono.time_since_epoch() + sysMinusMono_);
-//     } else {
-//         capMono = std::chrono::steady_clock::now();
-//         capSys = std::chrono::system_clock::now();
-//     }
-
-//     // --- Frame Creation ---
-//     const uint64_t frameId = frameCounter_.fetch_add(1);
-//     auto frame = std::make_shared<ZeroCopyFrameData>(
-//         bufferGuard,
-//         currentBuffer.start,
-//         buf.bytesused,
-//         cameraConfig_.width,
-//         cameraConfig_.height,
-//         bufferIndex,
-//         frameId,
-//         capSys,
-//         capMono
-//     );
-
-//     if (!frame->isValid()) {
-//         spdlog::warn("[DataConcrete] Created an invalid frame (frameId={}). Buffer will be auto-requeued.", frameId);
-//         return true; // Return true because the error is handled, and the loop can continue.
-//     }
-
-//     // --- Metrics Calculation and Pushing ---
-//     double fpsMeasured = (cameraConfig_.fps > 0) ? static_cast<double>(cameraConfig_.fps) : 30.0;
-//     if (prevCaptureTsSteady_.time_since_epoch().count() != 0) {
-//         auto dt_ms = std::chrono::duration_cast<std::chrono::milliseconds>(capMono - prevCaptureTsSteady_).count();
-//         if (dt_ms > 0) fpsMeasured = 1000.0 / static_cast<double>(dt_ms);
-//     }
-//     prevCaptureTsSteady_ = capMono;
-
-//     if (metricAggregator_) {
-//         CameraStats cs{};
-//         cs.timestamp = capSys;
-//         cs.frameNumber = frameId;
-//         cs.fps = fpsMeasured;
-//         cs.frameWidth = static_cast<uint32_t>(cameraConfig_.width);
-//         cs.frameHeight = static_cast<uint32_t>(cameraConfig_.height);
-//         cs.frameSize = static_cast<uint64_t>(buf.bytesused);
-//         metricAggregator_->beginFrame(cs.frameNumber, cs);
-//         spdlog::debug("[DataConcrete] Pushed metrics for frame {}: FPS={:.2f}, Size={}", 
-//                       cs.frameNumber, cs.fps, cs.frameSize);
-//         //metricAggregator_->mergeCamera(frameId, cs);   // <-- ADD THIS LINE
-//     }
-    
-//     // --- Push to Queues ---
-//     if (algoQueue_) {
-//         algoQueue_->push(frame);
-//     }
-//     if (displayOrigQueue_) {
-//         displayOrigQueue_->push(frame);
-//     }
-    
-//     return true;
-// }
-
-
-// //==============================================================================================================
-// inline bool DataConcrete::internalDequeFrame() {
-//     std::lock_guard<std::mutex> lock(mutex_);
-//     if (!streaming_) return false;
-
-//     struct v4l2_buffer buf{};
-//     buf.type   = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//     buf.memory = V4L2_MEMORY_MMAP;
-
-//     if (ioctl(fd_, VIDIOC_DQBUF, &buf) < 0) {
-//         if (errno != EAGAIN)
-//             reportError(fmt::format("VIDIOC_DQBUF failed: {}", std::strerror(errno)));
-//         return false;
-//     }
-
-//     const size_t bufferIndex = buf.index;
-//     Buffer& cur = buffers_[bufferIndex];
-
-//     // Empty frame ? requeue immediately
-//     if (buf.bytesused == 0) {
-//         spdlog::debug("[DataConcrete] Empty frame (idx={}), re-queue.", bufferIndex);
-//         queueBufferInternal(bufferIndex);
-//         return true;
-//     }
-
-//     // --- Zero-copy guard ---
-//     auto bufferGuard = std::shared_ptr<void>(cur.start, [this, bufferIndex](void*) {
-//         this->queueBuffer(bufferIndex);
-//     });
-
-//     // --- Timestamps ---
-//     std::chrono::steady_clock::time_point capMono;
-//     std::chrono::system_clock::time_point capSys;
-//     const bool haveDriverTs = (buf.timestamp.tv_sec || buf.timestamp.tv_usec);
-//     if (usesMonotonicTs_ && haveDriverTs && basesInitialized_) {
-//         auto mono_ns = std::chrono::seconds(buf.timestamp.tv_sec)
-//                      + std::chrono::microseconds(buf.timestamp.tv_usec);
-//         capMono = std::chrono::steady_clock::time_point(
-//             std::chrono::duration_cast<std::chrono::steady_clock::duration>(mono_ns));
-//         capSys = std::chrono::system_clock::time_point(capMono.time_since_epoch() + sysMinusMono_);
-//     } else {
-//         capMono = std::chrono::steady_clock::now();
-//         capSys  = std::chrono::system_clock::now();
-//     }
-
-//     // --- Frame ID ---
-//     const uint64_t frameId = frameCounter_.fetch_add(1, std::memory_order_relaxed);
-
-//     // --- Build ZeroCopyFrameData ---
-//     auto frame = std::make_shared<ZeroCopyFrameData>(
-//         bufferGuard,
-//         cur.start,
-//         buf.bytesused,
-//         cameraConfig_.width,
-//         cameraConfig_.height,
-//         bufferIndex,
-//         frameId,
-//         capSys,
-//         capMono
-//     );
-
-//     if (!frame->isValid()) {
-//         spdlog::warn("[DataConcrete] Invalid frame (id={}), dropping.", frameId);
-//         return true; // deleter re-queues
-//     }
-
-//     // --- FPS measurement (for logging & metrics) ---
-//     double fpsMeasured = cameraConfig_.fps > 0 ? static_cast<double>(cameraConfig_.fps) : 30.0;
-//     if (prevCaptureTsSteady_.time_since_epoch().count() != 0) {
-//         auto dt_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
-//                         capMono - prevCaptureTsSteady_).count();
-//         if (dt_ms > 0) fpsMeasured = 1000.0 / dt_ms;
-//     }
-//     prevCaptureTsSteady_ = capMono;
-
-//     // --- Push to Aggregator ---
-//     if (metricAggregator_) {
-//         CameraStats cs{};
-//         cs.timestamp    = capSys;
-//         cs.frameNumber  = frameId;
-//         cs.fps          = fpsMeasured;
-//         cs.frameWidth   = cameraConfig_.width;
-//         cs.frameHeight  = cameraConfig_.height;
-//         cs.frameSize    = buf.bytesused;
-
-//         spdlog::info("[DebugID] beginFrame frameId={}", frameId);
-//         metricAggregator_->beginFrame(frameId, cs);
-
-//         metricAggregator_->overlayStats("camera", {
-//             {"FPS", cs.fps},
-//             {"Width", static_cast<double>(cs.frameWidth)},
-//             {"Height", static_cast<double>(cs.frameHeight)},
-//             {"Size", static_cast<double>(cs.frameSize)}
-//         }, capSys);
-//     }
-
-//     // --- Push to downstream queues (with back-pressure) ---
-//     const size_t max_q_size = cameraConfig_.numBuffers * 2;
-//     bool pushed = true;
-
-//     if (displayOrigQueue_ && displayOrigQueue_->size() < max_q_size)
-//         displayOrigQueue_->push(frame);
-//     else if (displayOrigQueue_)
-//         pushed = false, spdlog::warn("[DataConcrete] Display queue full (frame {})", frameId);
-
-//     if (algoQueue_ && algoQueue_->size() < max_q_size)
-//         algoQueue_->push(frame);
-//     else if (algoQueue_)
-//         pushed = false, spdlog::warn("[DataConcrete] Algo queue full (frame {})", frameId);
-
-//     return pushed;
-// }
-// //==============================================================================================================
 
 //==============================================================================================================
 // REPLACE the existing internalDequeFrame (lines 797-886) with this corrected version
@@ -1537,7 +906,7 @@ inline bool DataConcrete::internalDequeFrame() {
         cs.frameSize    = buf.bytesused;
 
         // --- Push to downstream queues (with back-pressure) ---
-        const size_t max_q_size = cameraConfig_.numBuffers * 2;
+        const size_t max_q_size = static_cast<size_t>(cameraConfig_.numBuffers) * 2;
         pushed = true; // Assume pushed
 
         if (displayOrigQueue_ && displayOrigQueue_->size() < max_q_size)
@@ -1574,50 +943,12 @@ inline bool DataConcrete::internalDequeFrame() {
 
 
 
-// inline bool DataConcrete::queueBuffer(size_t bufferIndex) {
-//     std::lock_guard<std::mutex> lock(mutex_);
-//     if (bufferIndex >= buffers_.size()) {
-//         reportError(fmt::format("Invalid buffer index: {}", bufferIndex));
-//         return false;
-//     }
-//     return queueBufferInternal(bufferIndex);
-// }
-
 
 inline bool DataConcrete::queueBuffer(size_t bufferIndex) {
     // This is the PUBLIC, thread-safe method for requeuing.
     std::lock_guard<std::mutex> lock(mutex_);
     return queueBufferInternal(bufferIndex);
 }
-
-// inline bool DataConcrete::queueBufferInternal(size_t index) {
-//     try {
-//         if (index >= buffers_.size()) {
-//             reportError(fmt::format("Index out of range: {}", index));
-//             return false;
-//         }
-//         auto& buffer = buffers_[index];
-//         if (buffer.state == QUEUED) {
-//             spdlog::warn("[DataConcrete] Buffer {} already QUEUED.", index);
-//             return true;
-//         }
-
-//         struct v4l2_buffer buf = {};
-//         buf.type   = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-//         buf.memory = V4L2_MEMORY_MMAP;
-//         buf.index  = index;
-
-//         if (ioctl(fd_, VIDIOC_QBUF, &buf) < 0) {
-//             reportError(fmt::format("VIDIOC_QBUF failed for buffer {}: {}", index, std::strerror(errno)));
-//             return false;
-//         }
-//         buffer.state = QUEUED;
-//         return true;
-//     } catch (const std::exception& e) {
-//         reportError(fmt::format("Exception in queueBufferInternal for index {}: {}", index, e.what()));
-//         return false;
-//     }
-// }
 
 //==============================================================================================================
 // 1. queueBufferInternal – ACCEPT AVAILABLE + IN_USE (Fix Starvation on Init)
